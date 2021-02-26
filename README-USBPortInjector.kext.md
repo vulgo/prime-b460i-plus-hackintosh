@@ -53,10 +53,9 @@ Note that this B460 board wants AppleUSBXHCIPCI loading with class AppleUSBXHCIS
     <key>Add</key>
     <dict>
         ...
+	<!-- XHC: inject supported device ID -->
 	<key>PciRoot(0x0)/Pci(0x14,0x0)</key>
 	<dict>
-		<key>Comment</key>
-		<string>XHC</string>
 		<key>device-id</key>
 		<data>
 		r6IAAA==
