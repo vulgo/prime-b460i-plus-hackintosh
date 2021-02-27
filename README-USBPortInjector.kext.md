@@ -46,7 +46,7 @@ Disable the ports you aren't using by removing them from USBPortInjector.kext/Co
 
 Note that this B460 board wants AppleUSBXHCIPCI loading with class AppleUSBXHCISPT, otherwise USB will not work. PCI device ID injection in the OC config.plist:
 
-```
+```xml
 ...
 <key>DeviceProperties</key>
 <dict>
