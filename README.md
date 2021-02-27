@@ -41,7 +41,7 @@ Source: [https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-la
 
 Edit the ```DeviceProperties``` section of your config.plist so that the value for ```AAPL,ig-platform-id``` matches your configuration.
 
-```
+```xml
 ...
 <key>DeviceProperties</key>
 <dict>
@@ -72,7 +72,7 @@ Source: [https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-la
 
 Edit the ```PlatformInfo``` section of your config.plist so that the ```MLB```, ```ROM```, ```SystemSerialNumber``` and ```SystemUUID``` values are unique to your machine.
 
-```
+```xml
 ...
 <key>PlatformInfo</key>
 <dict>
