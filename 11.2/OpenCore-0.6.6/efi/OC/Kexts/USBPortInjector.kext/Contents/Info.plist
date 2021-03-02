@@ -28,8 +28,6 @@
 			<string>AppleUSBHostMergeProperties</string>
 			<key>IONameMatch</key>
 			<string>XHC</string>
-			<key>IOPCIPrimaryMatch</key>
-			<string>0x06ed8086</string>
 			<key>IOProbeScore</key>
 			<integer>5000</integer>
 			<key>IOProviderClass</key>
