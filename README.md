@@ -31,11 +31,11 @@ ASUS firmware version 1003.
 | Secure Boot &#8594; OS Type                         | Other OS |
 | Boot Configuration &#8594; Fast Boot                | Disabled |
 
-Source: [https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings)
+Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings)
   
 ## OpenCore Sanity Checker
 
-[https://opencore.slowgeek.com/](https://opencore.slowgeek.com/)
+[opencore.slowgeek.com/](https://opencore.slowgeek.com/)
 
 ## Graphics
 
@@ -66,7 +66,7 @@ Edit the ```DeviceProperties``` section of your config.plist so that the value f
 
 \* use `00009B3E` `AACbPg==` if `07009B3E` fails
 
-Source: [https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties)
+Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties)
 
 ## SMBIOS
 
@@ -105,9 +105,9 @@ Edit the ```PlatformInfo``` section of your config.plist so that the ```MLB```, 
 
 \* *GenSMBIOS output, iMac20,1*
 
-Source: [https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo)
+Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo)
 
-GenSMBIOS: [https://github.com/corpnewt/GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
+GenSMBIOS: [github.com/corpnewt/GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 
 ## USB
 
@@ -119,4 +119,4 @@ At the picker, **press space**, choose **Reset NVRAM**.
 
 ## Post-Install
 
-[https://dortania.github.io/OpenCore-Post-Install/](https://dortania.github.io/OpenCore-Post-Install/)
+[dortania.github.io/OpenCore-Post-Install/](https://dortania.github.io/OpenCore-Post-Install/)
