@@ -62,7 +62,7 @@ Edit the ```DeviceProperties``` section of your config.plist so that the value f
 | AAPL,ig-platform-id | Base64   | IGPU Configuration                    |
 |:--------------------|:---------|--------------------------------------:|
 | 07009B3E *          | BwCbPg== | Attached display                      |
-| 0300C89B            | AwDImw== | Headless (discrete GPU)               |
+| 0300C89B            | AwDImw== | Connectorless (using PCIe AMD GPU)    |
 
 \* use `00009B3E` `AACbPg==` if `07009B3E` fails
 
