@@ -1,6 +1,6 @@
 ## USBPortInjector.kext
 
-This codeless kext injects the port map and power properties for the XHC on our B460i-PLUS.
+This codeless kext injects a port map for the XHC on our B460i-PLUS.
 
 ```Info.plist``` will require edits and should have:
 * no more than **15** ports in the ```ports``` dictionary
