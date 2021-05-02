@@ -90,29 +90,11 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
         Name (HAVS, One)
         Name (HAGP, 0x0A)
         
-        /* HS11 */
-        Name (HBCN, Zero)
-        Name (HBCT, 0xFF)
-        Name (HBVS, Zero)
-        Name (HBGP, Zero)
-        
         /* HS12 */
         Name (HCCN, One)
         Name (HCCT, 0xFF)
         Name (HCVS, Zero)
         Name (HCGP, 0x0B)
-        
-        /* HS13 */
-        Name (HDCN, Zero)
-        Name (HDCT, 0xFF)
-        Name (HDVS, Zero)
-        Name (HDGP, Zero)
-        
-        /* HS14 */
-        Name (HECN, Zero)
-        Name (HECT, 0xFF)
-        Name (HEVS, Zero)
-        Name (HEGP, Zero)
         
         /* SS01 */
         Name (S1CN, One)
@@ -149,30 +131,6 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
         Name (S6CT, 0x03)
         Name (S6VS, One)
         Name (S6GP, 0x06)
-        
-        /* SS07 */
-        Name (S7CN, Zero)
-        Name (S7CT, 0xFF)
-        Name (S7VS, Zero)
-        Name (S7GP, Zero)
-        
-        /* SS08 */
-        Name (S8CN, Zero)
-        Name (S8CT, 0xFF)
-        Name (S8VS, Zero)
-        Name (S8GP, Zero)
-        
-        /* SS09 */
-        Name (S9CN, Zero)
-        Name (S9CT, 0xFF)
-        Name (S9VS, Zero)
-        Name (S9GP, Zero)
-        
-        /* SS10 */
-        Name (SACN, Zero)
-        Name (SACT, 0xFF)
-        Name (SAVS, Zero)
-        Name (SAGP, Zero)
         
         Method (GPLD, 2, NotSerialized)
         {
@@ -441,12 +399,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (HBCN, HBCT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (HBVS, HBGP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
@@ -473,12 +431,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (HDCN, HDCT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (HDVS, HDGP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
@@ -489,12 +447,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (HECN, HECT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (HEVS, HEGP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
@@ -505,12 +463,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (S7CN, S7CT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (S7VS, S7GP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
@@ -521,12 +479,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (S8CN, S8CT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (S8VS, S8GP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
@@ -537,12 +495,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (S9CN, S9CT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (S9VS, S9GP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
@@ -553,12 +511,12 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             {
                 Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                 {
-                    Return (GUPC (SACN, SACT))
+                    Return (GUPC (Zero, 0xFF))
                 }
 
                 Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
                 {
-                    Return (GPLD (SAVS, SAGP))
+                    Return (GPLD (Zero, Zero))
                 }
             }
         }
