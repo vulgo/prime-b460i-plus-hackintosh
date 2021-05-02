@@ -30,98 +30,145 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
 
     Scope (\_SB.PCI0.XHC.RHUB)
     {
+        /* HS01 */
         Name (H1CN, One)
         Name (H1CT, 0x03)
         Name (H1VS, One)
         Name (H1GP, One)
+        
+        /* HS02 */
         Name (H2CN, One)
         Name (H2CT, 0x03)
         Name (H2VS, One)
         Name (H2GP, 0x02)
+        
+        /* HS03 */
         Name (H3CN, One)
         Name (H3CT, 0x03)
         Name (H3VS, One)
         Name (H3GP, 0x03)
+        
+        /* HS04 */
         Name (H4CN, One)
         Name (H4CT, 0x03)
         Name (H4VS, One)
         Name (H4GP, 0x04)
+        
+        /* HS05 */
         Name (H5CN, One)
         Name (H5CT, 0x03)
         Name (H5VS, One)
         Name (H5GP, 0x05)
+        
+        /* HS06 */
         Name (H6CN, One)
         Name (H6CT, 0x03)
         Name (H6VS, One)
         Name (H6GP, 0x06)
+        
+        /* HS07 */
         Name (H7CN, One)
         Name (H7CT, Zero)
         Name (H7VS, One)
         Name (H7GP, 0x07)
+        
+        /* HS08 */
         Name (H8CN, One)
         Name (H8CT, Zero)
         Name (H8VS, One)
         Name (H8GP, 0x08)
+        
+        /* HS09 */
         Name (H9CN, One)
         Name (H9CT, Zero)
         Name (H9VS, One)
         Name (H9GP, 0x09)
+        
+        /* HS10 */
         Name (HACN, One)
         Name (HACT, Zero)
         Name (HAVS, One)
         Name (HAGP, 0x0A)
+        
+        /* HS11 */
         Name (HBCN, Zero)
         Name (HBCT, 0xFF)
         Name (HBVS, Zero)
         Name (HBGP, Zero)
+        
+        /* HS12 */
         Name (HCCN, One)
         Name (HCCT, 0xFF)
         Name (HCVS, Zero)
         Name (HCGP, 0x0B)
+        
+        /* HS13 */
         Name (HDCN, Zero)
         Name (HDCT, 0xFF)
         Name (HDVS, Zero)
         Name (HDGP, Zero)
+        
+        /* HS14 */
         Name (HECN, Zero)
         Name (HECT, 0xFF)
         Name (HEVS, Zero)
         Name (HEGP, Zero)
+        
+        /* SS01 */
         Name (S1CN, One)
         Name (S1CT, 0x03)
         Name (S1VS, One)
         Name (S1GP, One)
+        
+        /* SS02 */
         Name (S2CN, One)
         Name (S2CT, 0x03)
         Name (S2VS, One)
         Name (S2GP, 0x02)
+        
+        /* SS03 */
         Name (S3CN, One)
         Name (S3CT, 0x03)
         Name (S3VS, One)
         Name (S3GP, 0x03)
+        
+        /* SS04 */
         Name (S4CN, One)
         Name (S4CT, 0x03)
         Name (S4VS, One)
         Name (S4GP, 0x04)
+        
+        /* SS05 */
         Name (S5CN, One)
         Name (S5CT, 0x03)
         Name (S5VS, One)
         Name (S5GP, 0x05)
+        
+        /* SS06 */
         Name (S6CN, One)
         Name (S6CT, 0x03)
         Name (S6VS, One)
         Name (S6GP, 0x06)
+        
+        /* SS07 */
         Name (S7CN, Zero)
         Name (S7CT, 0xFF)
         Name (S7VS, Zero)
         Name (S7GP, Zero)
+        
+        /* SS08 */
         Name (S8CN, Zero)
         Name (S8CT, 0xFF)
         Name (S8VS, Zero)
         Name (S8GP, Zero)
+        
+        /* SS09 */
         Name (S9CN, Zero)
         Name (S9CT, 0xFF)
         Name (S9VS, Zero)
         Name (S9GP, Zero)
+        
+        /* SS10 */
         Name (SACN, Zero)
         Name (SACT, 0xFF)
         Name (SAVS, Zero)
