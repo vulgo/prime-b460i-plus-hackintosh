@@ -1,5 +1,33 @@
 DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
 {
+    External (_SB_.PCI0.XHC_.RHUB, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS01, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS02, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS03, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS04, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS05, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS06, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS07, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS08, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS09, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS10, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS11, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS12, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS13, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.HS14, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS01, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS02, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS03, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS04, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS05, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS06, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS07, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS08, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS09, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.SS10, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.USR1, DeviceObj)
+    External (_SB_.PCI0.XHC_.RHUB.USR2, DeviceObj)
+    
     Scope (\_SB.PCI0.XHC.RHUB)
     {
         /* HS01 */
@@ -287,7 +315,18 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             }
         }
 
+        Scope (SS01)
+        {
+            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
+            {
+                Return (GUPC (S1CN, S1CT))
+            }
 
+            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
+            {
+                Return (GPLD (S1VS, S1GP))
+            }
+        }
 
         Scope (SS02)
         {
@@ -402,85 +441,6 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             }
         }
 
-        If (CondRefOf (HS14))
-        {
-            Scope (HS14)
-            {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
-
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
-            }
-        }
-
-        If (CondRefOf (SS07))
-        {
-            Scope (SS07)
-            {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
-
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
-            }
-        }
-
-        If (CondRefOf (SS08))
-        {
-            Scope (SS08)
-            {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
-
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
-            }
-        }
-
-        If (CondRefOf (SS09))
-        {
-            Scope (SS09)
-            {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
-
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
-            }
-        }
-
-        If (CondRefOf (SS10))
-        {
-            Scope (SS10)
-            {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
-
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
-            }
-        }
         If (CondRefOf (HS14))
         {
             Scope (HS14)
