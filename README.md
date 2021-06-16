@@ -32,10 +32,6 @@ ASUS firmware version 1003.
 | Boot Configuration &#8594; Fast Boot                | Disabled |
 
 Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings)
-  
-## OpenCore Sanity Checker
-
-[opencore.slowgeek.com/](https://opencore.slowgeek.com/)
 
 ## Graphics
 
