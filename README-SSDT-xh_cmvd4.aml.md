@@ -2,7 +2,7 @@
 
 The stock ```xh_cmvd4``` table is incomplete and contains unsupported module-level ```StoreOp``` opcodes. It has been patched for proper macOS compatibility. 
 
-The end user may disable unused USB ports in this table to satisfy the macOS maximum of 15 ports requirement. For changes in ```xh_cmvd4``` to be effective ```USBPortInjector.kext``` or similar kernel extensions must not be loaded.
+The end user may disable unused USB ports in this table in order to keep within the macOS 15 port limit. For changes to ```xh_cmvd4``` to be effective, ```USBPortInjector.kext``` or similar kernel extensions must not be loaded.
 
 ### Field Translation
 
