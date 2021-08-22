@@ -1,6 +1,8 @@
 ## SSDT-xh_cmvd4.aml
 
-The stock ```xh_cmvd4``` table is incomplete and contains unsupported module-level ```StoreOp``` opcodes necessitating its patching for proper macOS compatibility. At the same time, the table can be further optimized by disabling unused USB ports and satisfying the macOS maximum of 15 ports requirement without USB port kexts.
+The stock ```xh_cmvd4``` table is incomplete and contains unsupported module-level ```StoreOp``` opcodes. It has been patched for proper macOS compatibility.
+
+The table may be further optimized, disabling unused USB ports and satisfying the macOS 15 ports requirement. For changes to the port map in ```xh_cmvd4```  to be effective, ```USBPortInjector``` or similar kernel extensions must *not* be loaded.
 
 ### Field Translation
 
@@ -13,7 +15,7 @@ The stock ```xh_cmvd4``` table is incomplete and contains unsupported module-lev
 
 ## Disabling Ports
 
-A port is disabled when both ```_UPC``` ```connectable``` and ```_PLD``` ```user visible``` field values are cleared.
+A port will be disabled when both ```_UPC``` ```connectable``` and ```_PLD``` ```user visible``` field values are ```Zero```.
 
 ```
 DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
