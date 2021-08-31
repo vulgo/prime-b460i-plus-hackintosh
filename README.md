@@ -4,7 +4,7 @@ OpenCore configuration for running macOS on the ASUS Prime B460i-PLUS motherboar
 
 ## Firmware Settings
 
-ASUS firmware version 1003.
+Use ASUS firmware version 1003 or newer.
 
 #### Advanced &#8594; System Agent (SA) Configuration
 
