@@ -33,9 +33,11 @@ Use ASUS firmware version 1003 or newer.
 
 Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#intel-bios-settings)
 
-## Graphics
+## Intel Graphics
 
-Edit the ```DeviceProperties``` section of your config.plist so that the value for ```AAPL,ig-platform-id``` matches your configuration.
+Edit the ```DeviceProperties``` section of your config.plist according to your configuration.
+
+#### Connectorless (using PCIe AMD GPU)
 
 ```xml
 ...
@@ -55,14 +57,47 @@ Edit the ```DeviceProperties``` section of your config.plist so that the value f
 ...
 ```
 
-| AAPL,ig-platform-id | Base64   | IGPU Configuration                    |
-|:--------------------|:---------|--------------------------------------:|
-| 07009B3E *          | BwCbPg== | Attached display                      |
-| 0300C89B            | AwDImw== | Connectorless (using PCIe AMD GPU)    |
-
-\* use `00009B3E` `AACbPg==` if `07009B3E` fails
-
 Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties)
+
+#### Attached Display
+
+Refer to [README-Intel-HD630-Graphics.md](https://github.com/vulgo/prime-b460i-plus-hackintosh/blob/main/README-Intel-HD630-Graphics.md) if you are going to use Intel graphics to drive more than one display.
+
+```xml
+...
+<key>DeviceProperties</key>
+<dict>
+    <key>Add</key>
+    <dict>
+        ...
+        <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+        <dict>
+            <key>AAPL,ig-platform-id</key>
+            <data>BwCbPg==</data>
+            <key>AAPL,GfxYTile</key>
+            <data>AQAAAA==</data>	
+            <key>framebuffer-patch-enable</key>
+            <data>AQAAAA==</data>
+            <key>framebuffer-pipecount</key>
+            <data>AgAAAA==</data>
+            <key>framebuffer-portcount</key>
+            <data>AgAAAA==</data>
+            <key>framebuffer-unifiedmem</key>
+            <data>AAAAgA==</data>
+            <key>framebuffer-con1-enable</key>
+            <data>AQAAAA==</data>
+            <key>framebuffer-con1-type</key>
+            <data>AAgAAA==</data>
+            <key>force-online</key>
+            <data>AQAAAA==</data>
+        </dict>
+        ...
+    </dict>
+</dict>
+...
+```
+
+Source: [github.com/acidanthera/WhateverGreen](https://github.com/acidanthera/WhateverGreen)
 
 ## SMBIOS
 
