@@ -2,6 +2,10 @@
 
 This needs to be written
 
+### Boot arguments
+
+- ```igfxfw=2``` load Apple's graphics microcode (GuC)
+
 ### Device Properties
 
 Some additional ```WhateverGreen.kext``` device properties
