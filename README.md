@@ -61,8 +61,6 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 
 #### Attached Display
 
-Refer to [README-Intel-HD630-Graphics.md](https://github.com/vulgo/prime-b460i-plus-hackintosh/blob/main/README-Intel-HD630-Graphics.md) if you are going to use Intel graphics to drive more than one display.
-
 ```xml
 ...
 <key>DeviceProperties</key>
@@ -74,28 +72,24 @@ Refer to [README-Intel-HD630-Graphics.md](https://github.com/vulgo/prime-b460i-p
         <dict>
             <key>AAPL,ig-platform-id</key>
             <data>BwCbPg==</data>
-            <key>AAPL,GfxYTile</key>
-            <data>AQAAAA==</data>	
             <key>framebuffer-patch-enable</key>
             <data>AQAAAA==</data>
             <key>framebuffer-pipecount</key>
             <data>AgAAAA==</data>
             <key>framebuffer-portcount</key>
             <data>AgAAAA==</data>
-            <key>framebuffer-unifiedmem</key>
-            <data>AAAAgA==</data>
             <key>framebuffer-con1-enable</key>
             <data>AQAAAA==</data>
             <key>framebuffer-con1-type</key>
             <data>AAgAAA==</data>
-            <key>force-online</key>
-            <data>AQAAAA==</data>
         </dict>
         ...
     </dict>
 </dict>
 ...
 ```
+
+Refer to [README-Intel-HD630-Graphics.md](https://github.com/vulgo/prime-b460i-plus-hackintosh/blob/main/README-Intel-HD630-Graphics.md) if you will be using more than one display.
 
 Source: [github.com/acidanthera/WhateverGreen](https://github.com/acidanthera/WhateverGreen)
 
