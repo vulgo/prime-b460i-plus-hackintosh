@@ -1,17 +1,24 @@
 ## Intel HD630 Graphics
 
-This needs to be written
+Intel graphics apparently works well for a single display. Prefer DisplayPort instead of HDMI where possible.
 
-### Boot arguments
+#### Workarounds for graphics failures after booting with two displays
 
-- ```igfxfw=2``` load Apple's graphics microcode (GuC)
+- boot with the first display connected, connect the second after the login window has presented
+- boot with both displays connnected, it is then necessary to reconnect the display(s)
 
-### Device Properties
+### WhateverGreen.kext
 
-Some additional ```WhateverGreen.kext``` device properties
+#### Boot arguments
 
-- ```framebuffer-unifiedmem``` increases unified memory limit to 2G (from 1.5G)
-- ```force-online``` and ```force-online-framebuffers``` works around HDMI connection failure after waking from sleep
+- ```igfxfw=2``` optionally forces WEG to load Apple's graphics microcode (GuC)
+
+#### Device Properties
+
+Some ```WhateverGreen.kext``` device properties not mentioned in ```README.md```
+
+- ```framebuffer-unifiedmem``` optionally increases the unified memory limit from ```1.5G``` to ```2G```
+- ```force-online``` and ```force-online-framebuffers``` works around HDMI black screen issues after waking from sleep
 
 ```xml
 ...
@@ -39,9 +46,3 @@ Some additional ```WhateverGreen.kext``` device properties
 ```
 
 
-### Graphics failure booting with two displays
-
-This needs to be written
-
-- boot with the first display connected, connect the second after the login window has presented
-- boot with both displays connnected, it is then necessary to reconnect the display(s)
