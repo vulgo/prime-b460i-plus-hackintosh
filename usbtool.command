@@ -278,10 +278,18 @@ final class BundleWriter {
 	}
 	
 	private lazy var modelIdentifier: String = {
+		var kIOMainPort: mach_port_t
+		
+		if #available(macOS 12.0, *) {
+			kIOMainPort = kIOMainPortDefault
+		} else {
+			kIOMainPort = kIOMasterPortDefault
+		}
+		
 		let entryPath = "IOService:/"
 		let modelKey = "model" as CFString
 		var identifier: String?
-		let entry = IORegistryEntryFromPath(kIOMasterPortDefault, entryPath)
+		let entry = IORegistryEntryFromPath(kIOMainPort, entryPath)
 		
 		if let data = IORegistryEntryCreateCFProperty(entry, modelKey, kCFAllocatorDefault, 0)?.takeRetainedValue() as? Data {
 			identifier = String(data: data, encoding: .macOSRoman)?.filter { $0 != "\0"}
