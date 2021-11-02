@@ -2,7 +2,7 @@
 
 The stock `xh_cmvd4` table is incomplete and contains unsupported module-level `StoreOp` opcodes. It has been patched for proper macOS compatibility.
 
-The table may be further optimized, disabling unused USB ports and satisfying the macOS 15 ports requirement. For changes to the port map in `xh_cmvd4`  to be effective, `USBPortInjector` or similar kernel extensions must *not* be loaded.
+The table may be further optimized, disabling unused USB ports and satisfying the macOS 15 ports requirement. For changes to the port map in `xh_cmvd4`  to be effective, `USBPorts.kext` or similar kernel extensions must *not* be loaded.
 
 ### Field Translation
 
