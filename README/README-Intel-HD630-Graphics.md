@@ -15,10 +15,10 @@ Intel graphics apparently works well for a single display. Prefer DisplayPort in
 
 #### Device Properties
 
-Some ```WhateverGreen.kext``` device properties not mentioned in ```README.md```
+Some ```WhateverGreen.kext``` device properties not mentioned in `README.md`
 
-- ```framebuffer-unifiedmem``` optionally increases the unified memory limit from ```1.5G``` to ```2G```
-- ```force-online``` and ```force-online-framebuffers``` works around HDMI black screen issues after waking from sleep
+- `framebuffer-unifiedmem` optionally increases the unified memory limit from `1.5G` to `2G`
+- `force-online` and `force-online-framebuffers` works around HDMI black screen issues after waking from sleep
 
 ```xml
 ...
