@@ -3,24 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>org.vulgo.USBPortInjector</string>
+	<string>org.usbtool.kext</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>USBPortInjector</string>
+	<string>USBPorts</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
-	<key>CFBundleSupportedPlatforms</key>
-	<array>
-		<string>MacOSX</string>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>B460i-PLUS: USB Ports on XHC</key>
+		<key>iMac20,1</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
@@ -28,8 +22,6 @@
 			<string>AppleUSBHostMergeProperties</string>
 			<key>IONameMatch</key>
 			<string>XHC</string>
-			<key>IOProbeScore</key>
-			<integer>5000</integer>
 			<key>IOProviderClass</key>
 			<string>AppleUSBXHCISPT</string>
 			<key>IOProviderMergeProperties</key>
@@ -44,8 +36,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>HS01</string>
 						<key>port</key>
 						<data>
 						AQAAAA==
@@ -55,8 +45,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>HS02</string>
 						<key>port</key>
 						<data>
 						AgAAAA==
@@ -66,8 +54,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>HS03</string>
 						<key>port</key>
 						<data>
 						AwAAAA==
@@ -77,8 +63,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>HS04</string>
 						<key>port</key>
 						<data>
 						BAAAAA==
@@ -88,8 +72,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>HS05</string>
 						<key>port</key>
 						<data>
 						BQAAAA==
@@ -99,8 +81,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>HS06</string>
 						<key>port</key>
 						<data>
 						BgAAAA==
@@ -110,8 +90,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>name</key>
-						<string>HS07</string>
 						<key>port</key>
 						<data>
 						BwAAAA==
@@ -121,8 +99,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>name</key>
-						<string>HS08</string>
 						<key>port</key>
 						<data>
 						CAAAAA==
@@ -132,8 +108,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>name</key>
-						<string>HS09</string>
 						<key>port</key>
 						<data>
 						CQAAAA==
@@ -143,8 +117,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>name</key>
-						<string>HS10</string>
 						<key>port</key>
 						<data>
 						CgAAAA==
@@ -154,8 +126,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>255</integer>
-						<key>name</key>
-						<string>HS12</string>
 						<key>port</key>
 						<data>
 						DAAAAA==
@@ -165,8 +135,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>SS01</string>
 						<key>port</key>
 						<data>
 						EQAAAA==
@@ -176,8 +144,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>SS02</string>
 						<key>port</key>
 						<data>
 						EgAAAA==
@@ -187,8 +153,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>SS03</string>
 						<key>port</key>
 						<data>
 						EwAAAA==
@@ -209,8 +173,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>SS05</string>
 						<key>port</key>
 						<data>
 						FQAAAA==
@@ -220,8 +182,6 @@
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>name</key>
-						<string>SS06</string>
 						<key>port</key>
 						<data>
 						FgAAAA==

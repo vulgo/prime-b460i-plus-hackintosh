@@ -89,13 +89,13 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 ...
 ```
 
-Refer to [README-Intel-HD630-Graphics.md](https://github.com/vulgo/prime-b460i-plus-hackintosh/blob/main/README-Intel-HD630-Graphics.md) if you will be using more than one display.
+Refer to [README-Intel-HD630-Graphics.md](/README/README-Intel-HD630-Graphics.md) if you will be using more than one display.
 
 Source: [github.com/acidanthera/WhateverGreen](https://github.com/acidanthera/WhateverGreen)
 
 ## SMBIOS
 
-Edit the ```PlatformInfo``` section of your config.plist so that the ```MLB```, ```ROM```, ```SystemSerialNumber``` and ```SystemUUID``` values are unique to your machine.
+Edit the `PlatformInfo` section of your config.plist so that the `MLB`, `ROM`, `SystemSerialNumber` and `SystemUUID` values are unique to your machine.
 
 ```xml
 ...
@@ -134,13 +134,15 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 
 GenSMBIOS: [github.com/corpnewt/GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 
+## Reset NVRAM
+
+At the picker, **press space**, choose `Reset NVRAM`.
+
+Reset NVRAM at first boot and **whenever the bootloader files have changed**.
+
 ## USB
 
-Edit the USBPortInjector.kext ```Info.plist```. See [README-USBPortInjector.kext.md](https://github.com/vulgo/prime-b460i-plus-hackintosh/blob/main/README-USBPortInjector.kext.md)
-
-## First boot
-
-At the picker, **press space**, choose **Reset NVRAM**.
+Generate a valid `USBPorts.kext`. See [README-usbtool.command.md](/README/README-usbtool.command.md)
 
 ## Post-Install
 
