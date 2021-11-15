@@ -371,7 +371,7 @@ final class ViewController: NSViewController {
 	}
 	
 	private lazy var portListView: NSGridView = {
-		let view = NSGridView(numberOfColumns: 3, rows: 0)
+		let view = NSGridView(numberOfColumns: 2, rows: 0)
 		
 		for port in PortMap.default.data {
 			let button = makePortSwitchButton(title: port.name, enabled: port.isEnabled)
@@ -386,6 +386,7 @@ final class ViewController: NSViewController {
 		view.rowAlignment = .firstBaseline
 		view.columnSpacing = kPortListColumnSpacing
 		view.rowSpacing = kPortListRowSpacing
+		view.column(at: 0).xPlacement = .fill
 		view.column(at: 1).xPlacement = .leading
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
@@ -448,7 +449,7 @@ final class ViewController: NSViewController {
 		button.title = title
 		button.setButtonType(.switch)
 		button.state = enabled ? .on : .off
-		button.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		button.invalidateIntrinsicContentSize()
 		return button
 	}
 	
@@ -459,7 +460,7 @@ final class ViewController: NSViewController {
 		textField.isEditable = false
 		textField.textColor = NSColor.secondaryLabelColor
 		textField.stringValue = stringValue
-		textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+		textField.invalidateIntrinsicContentSize()
 		return textField
 	}
 }
