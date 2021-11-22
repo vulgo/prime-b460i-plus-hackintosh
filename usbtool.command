@@ -339,7 +339,7 @@ final class BundleWriter {
 			]
 		}
 		
-		let driverPersonality: [String: Any] = [
+		let personalities: [String: Any] = [
 			kDriverPersonalityKey: [
 				bundleIdentifierKey: driverBundleIdentifier,
 				kIOClassKey: driverClass,
@@ -355,7 +355,7 @@ final class BundleWriter {
 		
 		propertyList[bundleNameKey] = kBundleName
 		propertyList[bundleIdentifierKey] = kBundleIdentifier
-		propertyList[personalitiesKey] = driverPersonality
+		propertyList[personalitiesKey] = personalities
 
 		let data = try PropertyListSerialization.xml(from: propertyList)
 		try bundle.createDirectories()
