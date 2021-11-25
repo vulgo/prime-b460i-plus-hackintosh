@@ -21,6 +21,7 @@ A port will be disabled when both `_UPC` `connectable` and `_PLD` `user visible`
 DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
     ...
     Scope (\_SB.PCI0.XHC.RHUB)
+    {
         ...
         /* port HS14 is disabled */
         Name (HECN, Zero) /* connectable is zero */
