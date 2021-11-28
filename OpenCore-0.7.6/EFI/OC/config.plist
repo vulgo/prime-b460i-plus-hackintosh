@@ -40,7 +40,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Patched xh_cmvd4</string>
+				<string>Add patched xh_cmvd4</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -53,7 +53,7 @@
 				<key>All</key>
 				<false/>
 				<key>Comment</key>
-				<string>Drop OEM xh_cmvd4</string>
+				<string>Delete OEM xh_cmvd4</string>
 				<key>Enabled</key>
 				<true/>
 				<key>OemTableId</key>
@@ -67,7 +67,7 @@
 				<key>All</key>
 				<false/>
 				<key>Comment</key>
-				<string>Drop OEM UsbCTabl</string>
+				<string>Delete unused OEM UsbCTabl</string>
 				<key>Enabled</key>
 				<true/>
 				<key>OemTableId</key>
@@ -148,29 +148,23 @@
 	<dict>
 		<key>Add</key>
 		<dict>
-			<!-- XHC: inject supported device ID -->
+			<!-- 300 series USB controller: add supported device ID -->
 			<key>PciRoot(0x0)/Pci(0x14,0x0)</key>
 			<dict>
 				<key>device-id</key>
-				<data>
-				r6IAAA==
-				</data>
+				<data>r6IAAA==</data>
 			</dict>
-			<!-- HDEF: inject layout-id -->
+			<!-- Built in audio: add layout-id -->
 			<key>PciRoot(0x0)/Pci(0x1F,0x3)</key>
 			<dict>
 				<key>layout-id</key>
-				<data>
-				AwAAAA==
-				</data>
+				<data>AwAAAA==</data>
 			</dict>
-			<!-- IGPU: inject ig-platform-id -->
+			<!-- Intel HD Graphics: add device properties -->
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>AAPL,ig-platform-id</key>
-				<data>
-				AwDImw==
-				</data>
+				<data>AwDImw==</data>
 			</dict>
 		</dict>
 		<key>Delete</key>
@@ -294,11 +288,9 @@
 		<key>Emulate</key>
 		<dict>
 			<key>Cpuid1Data</key>
-			<data>
-			</data>
+			<data></data>
 			<key>Cpuid1Mask</key>
-			<data>
-			</data>
+			<data></data>
 			<key>DummyPowerManagement</key>
 			<false/>
 			<key>MaxKernel</key>
@@ -442,11 +434,9 @@
 			<key>HaltLevel</key>
 			<integer>2147483648</integer>
 			<key>PasswordHash</key>
-			<data>
-			</data>
+			<data></data>
 			<key>PasswordSalt</key>
-			<data>
-			</data>
+			<data></data>
 			<key>ScanPolicy</key>
 			<integer>0</integer>
 			<key>SecureBootModel</key>
@@ -485,37 +475,27 @@
 			<key>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14</key>
 			<dict>
 				<key>DefaultBackgroundColor</key>
-				<data>
-				AAAAAA==
-				</data>
+				<data>AAAAAA==</data>
 				<key>UIScale</key>
-				<data>
-				AQ==
-				</data>
+				<data>AQ==</data>
 			</dict>
 			<key>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102</key>
 			<dict>
 				<key>rtc-blacklist</key>
-				<data>
-				</data>
+				<data></data>
 			</dict>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>ForceDisplayRotationInEFI</key>
 				<integer>0</integer>
 				<key>SystemAudioVolume</key>
-				<data>
-				Rg==
-				</data>
+				<data>Rg==</data>
 				<key>boot-args</key>
 				<string>keepsyms=1</string>
 				<key>csr-active-config</key>
-				<data>
-				AAAAAA==
-				</data>
+				<data>AAAAAA==</data>
 				<key>prev-lang:kbd</key>
-				<data>
-				</data>
+				<data></data>
 				<key>run-efi-updater</key>
 				<string>No</string>
 			</dict>
@@ -648,7 +628,7 @@
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
-				<string>HFS+ Driver</string>
+				<string>Apple HFS+ driver</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -658,7 +638,7 @@
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
-				<string></string>
+				<string>OC RT driver</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -668,7 +648,7 @@
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
-				<string></string>
+				<string>OC graphical UI</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
