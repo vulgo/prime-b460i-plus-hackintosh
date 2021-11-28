@@ -6,13 +6,13 @@ After completing the OpenCore `config.plist` according to [README.md](/README.md
 
 - boot the B460i-PLUS system into macOS
 - run `usbtool.command` located in the root directory of this repository
-- keep within the 15 port limit by switching off the ports that aren't being used
+- keep within the 15 port limit by switching off at least 2 ports
 - press the button to generate `USBPorts.kext` on the desktop
 
 #### Install USBPorts.kext to the Bootloader Kexts Directory
 
 - mount the EFI system partition
-- copy `USBPorts.kext` from the desktop to `/Volumes/EFI/EFI/OC/Kexts`
+- replace `USBPorts.kext` in `/Volumes/EFI/EFI/OC/Kexts` with the version from the desktop
 
 ### USB 2 Port Locations
 
@@ -52,14 +52,12 @@ Note that this B460 board wants AppleUSBXHCIPCI loading with class AppleUSBXHCIS
     <key>Add</key>
     <dict>
         ...
-	<!-- XHC: inject supported device ID -->
-	<key>PciRoot(0x0)/Pci(0x14,0x0)</key>
-	<dict>
-		<key>device-id</key>
-		<data>
-		r6IAAA==
-		</data>
-	</dict>
+        <!-- 300 series USB controller: add supported device ID -->
+        <key>PciRoot(0x0)/Pci(0x14,0x0)</key>
+        <dict>
+             <key>device-id</key>
+             <data>r6IAAA==</data>
+         </dict>
         ...
     </dict>
 </dict>

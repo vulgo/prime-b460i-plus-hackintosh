@@ -1,8 +1,14 @@
-## Intel HD630 Graphics
+# Intel Graphics
 
-Intel graphics apparently works well for a single display. Prefer DisplayPort instead of HDMI where possible.
+Intel graphics should work well with a single display. Prefer DisplayPort instead of HDMI where possible.
 
-#### Workarounds for graphics failures after booting with two displays
+#### Sources
+
+- [acidanthera/WhateverGreen/README](https://github.com/acidanthera/WhateverGreen/blob/master/README.md)
+- [acidanthera/WhateverGreen/FAQ/IntelHD](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+- [acidanthera/WhateverGreen/FAQ/Shiki](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Shiki.en.md)
+
+### Workarounds for graphics failures after booting with two displays
 
 - boot with the first display connected, connect the second after the login window has presented
 - boot with both displays connnected, it is then necessary to reconnect the display(s)

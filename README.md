@@ -89,9 +89,7 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 ...
 ```
 
-Refer to [README-Intel-HD630-Graphics.md](/README/README-Intel-HD630-Graphics.md) if you will be using more than one display.
-
-Source: [github.com/acidanthera/WhateverGreen](https://github.com/acidanthera/WhateverGreen)
+Refer to [README-Intel-Graphics.md](/README/README-Intel-Graphics.md)
 
 ## SMBIOS
 
@@ -142,7 +140,9 @@ Reset NVRAM at first boot and **whenever the bootloader files have changed**.
 
 ## USB
 
-Generate a valid `USBPorts.kext`. See [README-usbtool.command.md](/README/README-usbtool.command.md)
+Generate a valid `USBPorts.kext`.
+
+Refer to [README-usbtool.command.md](/README/README-usbtool.command.md)
 
 ## Post-Install
 
