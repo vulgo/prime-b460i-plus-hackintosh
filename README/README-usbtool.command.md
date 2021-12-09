@@ -52,7 +52,7 @@ Note that this B460 board wants AppleUSBXHCIPCI loading with class AppleUSBXHCIS
     <key>Add</key>
     <dict>
         ...
-        <!-- 300 series USB controller: add supported device ID -->
+        <!-- 200 series USB controller: add supported device ID -->
         <key>PciRoot(0x0)/Pci(0x14,0x0)</key>
         <dict>
              <key>device-id</key>
