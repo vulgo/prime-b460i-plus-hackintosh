@@ -1,6 +1,6 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS on the ASUS Prime B460i-PLUS motherboard.
+OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherboard.
 
 ## Firmware Settings
 
@@ -138,12 +138,25 @@ At the picker, **press space**, choose `Reset NVRAM`.
 
 Reset NVRAM at first boot and **whenever the bootloader files have changed**.
 
-## USB
+## Post-Install
+
+### USB
 
 Generate a valid `USBPorts.kext`.
 
 Refer to [README-usbtool.command.md](/README/README-usbtool.command.md)
 
-## Post-Install
+### Dortania Post-Install
 
-[dortania.github.io/OpenCore-Post-Install/](https://dortania.github.io/OpenCore-Post-Install/)
+Refer to [dortania.github.io/OpenCore-Post-Install/](https://dortania.github.io/OpenCore-Post-Install/)
+
+## Credits
+
+- [acidanthera](https://github.com/acidanthera)
+- [apple](https://github.com/apple)
+- [corpnewt](https://github.com/corpnewt)
+- [dortania](https://github.com/dortania)
+- [mieze](https://github.com/Mieze)
+- [Piker-Alpha](https://github.com/Piker-Alpha)
+- [RehabMan](https://github.com/RehabMan)
+
