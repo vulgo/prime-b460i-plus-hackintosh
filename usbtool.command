@@ -154,6 +154,26 @@ extension NSMenu {
 		self.init(title: title)
 		self.items = items
 	}
+	
+	public static let mainMenu: NSMenu = {
+		let processName = ProcessInfo.processInfo.processName
+		let appMenu = NSMenuItem(title: processName)
+		let editMenu = NSMenuItem(title: "Edit")
+		appMenu.submenu = NSMenu(title: processName, items: [
+			NSMenuItem(title: "About \(processName)",
+				   action: #selector(NSApplication.orderFrontStandardAboutPanel(_:))),
+			NSMenuItem.separator(),
+			NSMenuItem(title: "Quit \(processName)",
+				   action: #selector(NSApplication.terminate(_:)),
+				   keyEquivalent: "q")
+		])
+		editMenu.submenu = NSMenu(title: "Edit", items: [
+			NSMenuItem(title: "Copy",
+				   action: #selector(NSText.copy(_:)),
+				   keyEquivalent: "c")
+		])
+		return NSMenu(title: "Main Menu", items: [appMenu, editMenu])
+	}()
 }
 
 extension NSMenuItem {
@@ -163,9 +183,27 @@ extension NSMenuItem {
 }
 
 extension NSWindow {
-	var closeButton: NSButton? { standardWindowButton(.closeButton) }
-	var miniaturizeButton: NSButton? { standardWindowButton(.miniaturizeButton) }
-	var zoomButton: NSButton? { standardWindowButton(.zoomButton) }
+	public var closeButton: NSButton? {
+		standardWindowButton(.closeButton)
+	}
+	
+	public var miniaturizeButton: NSButton? {
+		standardWindowButton(.miniaturizeButton)
+	}
+	
+	public var zoomButton: NSButton? {
+		standardWindowButton(.zoomButton)
+	}
+	
+	public static let mainWindow: NSWindow = {
+		let window = NSWindow()
+		window.title = kAppTitle
+		window.styleMask = [.titled, .closable]
+		window.miniaturizeButton?.isHidden = true
+		window.zoomButton?.isHidden = true
+		window.contentView?.widthAnchor.constraint(greaterThanOrEqualToConstant: kWindowWidth).isActive = true
+		return window
+	}()
 }
 
 extension PropertyListSerialization {
@@ -403,7 +441,7 @@ final class ViewController: NSViewController {
 	}()
 	
 	override func loadView() {
-		view = AppDelegate.shared.mainWindow.contentView!
+		view = NSWindow.mainWindow.contentView!
 	}
 	
 	override func viewDidLoad() {
@@ -478,36 +516,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		super.init()
 	}
 	
-	public lazy var mainWindow: NSWindow = {
-		let window = NSWindow()
-		window.title = kAppTitle
-		window.styleMask = [.titled, .closable]
-		window.miniaturizeButton?.isHidden = true
-		window.zoomButton?.isHidden = true
-		window.contentView?.widthAnchor.constraint(greaterThanOrEqualToConstant: kWindowWidth).isActive = true
-		return window
-	}()
-	
-	private lazy var mainMenu: NSMenu = {
-		let processName = ProcessInfo.processInfo.processName
-		let appMenu = NSMenuItem(title: processName)
-		let editMenu = NSMenuItem(title: "Edit")
-		appMenu.submenu = NSMenu(title: processName, items: [
-			NSMenuItem(title: "About \(processName)",
-				   action: #selector(NSApplication.orderFrontStandardAboutPanel(_:))),
-			NSMenuItem.separator(),
-			NSMenuItem(title: "Quit \(processName)",
-				   action: #selector(NSApplication.terminate(_:)),
-				   keyEquivalent: "q")
-		])
-		editMenu.submenu = NSMenu(title: "Edit", items: [
-			NSMenuItem(title: "Copy",
-				   action: #selector(NSText.copy(_:)),
-				   keyEquivalent: "c")
-		])
-		return NSMenu(title: "Main Menu", items: [appMenu, editMenu])
-	}()
-	
 	@objc func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
 		return true
 	}
@@ -515,17 +523,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func applicationDidFinishLaunching(_ notification: Notification) {
 		NSApp.activate(ignoringOtherApps: true)
 	}
-	
-	public func runApp() {
+}
+
+struct USBTool {
+	static func main() {
+		let window = NSWindow.mainWindow
 		NSApp = NSApplication.shared
-		NSApp.delegate = Self.shared
-		NSApp.mainMenu = mainMenu
+		NSApp.delegate = AppDelegate.shared
+		NSApp.mainMenu = NSMenu.mainMenu
 		NSApp.setActivationPolicy(.regular)
-		mainWindow.contentViewController = ViewController.shared
-		mainWindow.makeKeyAndOrderFront(self)
-		mainWindow.center()
+		window.contentViewController = ViewController.shared
+		window.makeKeyAndOrderFront(self)
+		window.center()
 		NSApp.run()
 	}
 }
 
-AppDelegate.shared.runApp()
+USBTool.main()
