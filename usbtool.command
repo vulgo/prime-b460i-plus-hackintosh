@@ -149,36 +149,16 @@ extension FixedWidthInteger {
 	}
 }
 
+extension NSMenuItem {
+	convenience init(title: String, action: Selector? = nil) {
+		self.init(title: title, action: action, keyEquivalent: "")
+	}
+}
+
 extension NSMenu {
 	convenience init(title: String, items: [NSMenuItem]) {
 		self.init(title: title)
 		self.items = items
-	}
-	
-	public static let mainMenu: NSMenu = {
-		let processName = ProcessInfo.processInfo.processName
-		let appMenu = NSMenuItem(title: processName)
-		let editMenu = NSMenuItem(title: "Edit")
-		appMenu.submenu = NSMenu(title: processName, items: [
-			NSMenuItem(title: "About \(processName)",
-				   action: #selector(NSApplication.orderFrontStandardAboutPanel(_:))),
-			NSMenuItem.separator(),
-			NSMenuItem(title: "Quit \(processName)",
-				   action: #selector(NSApplication.terminate(_:)),
-				   keyEquivalent: "q")
-		])
-		editMenu.submenu = NSMenu(title: "Edit", items: [
-			NSMenuItem(title: "Copy",
-				   action: #selector(NSText.copy(_:)),
-				   keyEquivalent: "c")
-		])
-		return NSMenu(title: "Main Menu", items: [appMenu, editMenu])
-	}()
-}
-
-extension NSMenuItem {
-	convenience init(title: String, action: Selector? = nil) {
-		self.init(title: title, action: action, keyEquivalent: "")
 	}
 }
 
@@ -194,22 +174,37 @@ extension NSWindow {
 	public var zoomButton: NSButton? {
 		standardWindowButton(.zoomButton)
 	}
-	
-	public static let mainWindow: NSWindow = {
-		let window = NSWindow()
-		window.title = kAppTitle
-		window.styleMask = [.titled, .closable]
-		window.miniaturizeButton?.isHidden = true
-		window.zoomButton?.isHidden = true
-		window.contentView?.widthAnchor.constraint(greaterThanOrEqualToConstant: kWindowWidth).isActive = true
-		return window
-	}()
 }
 
 extension PropertyListSerialization {
         class func xmlData(from dictionary: [String: Any]) throws -> Data {
                 return try Self.data(fromPropertyList: dictionary, format: .xml, options: 0)
         }
+}
+
+extension NSTextField {
+	public static func makePortLabel(_ stringValue: String) -> NSTextField {
+		let textField = NSTextField()
+		textField.drawsBackground = false
+		textField.isBezeled = false
+		textField.isEditable = false
+		textField.isSelectable = true
+		textField.textColor = NSColor.secondaryLabelColor
+		textField.stringValue = stringValue
+		textField.invalidateIntrinsicContentSize()
+		return textField
+	}
+}
+
+extension NSButton {
+	public static func makePortSwitchButton(title: String, enabled: Bool) -> NSButton {
+		let button = NSButton()
+		button.title = title
+		button.setButtonType(.switch)
+		button.state = enabled ? .on : .off
+		button.invalidateIntrinsicContentSize()
+		return button
+	}
 }
 
 struct RuntimeError: LocalizedError {
@@ -222,7 +217,7 @@ struct RuntimeError: LocalizedError {
 	}
 	
 	var errorDescription: String? {
-		return "The operation couldn't be completed (\(String(describing: self))) \(location): \(description)"
+		return "The operation couldn't be completed: \(String(describing: self))"
 	}
 }
 
@@ -281,6 +276,14 @@ struct Bundle {
 	let kextURL: URL
 	let contentsURL: URL
 	let plistURL: URL
+	
+	func exists() -> Bool {
+		return FileManager.default.directoryExists(atPath: kextURL.path)
+	}
+
+	func remove() throws {
+		try FileManager.default.removeItem(atPath: kextURL.path)
+	}
 	
 	func createDirectories() throws {
 		try FileManager.default.createDirectory(atPath: contentsURL.path, withIntermediateDirectories: true, attributes: nil)
@@ -342,6 +345,14 @@ final class BundleWriter {
 		return identifier!
 	}()
 	
+	private func promptOverwrite(bundle: Bundle) -> Bool {
+		let alert: NSAlert = NSAlert()
+		alert.messageText = "\(bundle.kextURL.path) exists"
+		alert.addButton(withTitle: "Overwrite")
+		alert.addButton(withTitle: "Cancel")
+		return alert.runModal() == .alertFirstButtonReturn ? true : false
+	}
+	
 	public func write(destination url: URL, userMap: PortMap) throws -> URL {
 		let bundleIdentifierKey = kCFBundleIdentifierKey as String
 		let bundleNameKey = kCFBundleNameKey as String
@@ -389,9 +400,19 @@ final class BundleWriter {
 		]
 
 		let data = try PropertyListSerialization.xmlData(from: propertyList)
+		
+		if bundle.exists() {
+			try DispatchQueue.main.sync {
+				if !promptOverwrite(bundle: bundle) {
+					throw RuntimeError("cancelled by user")
+				}
+
+				try bundle.remove()
+			}
+		}
+		
 		try bundle.createDirectories()
 		try bundle.writePropertyList(data: data)
-		try? bundle.updateModificationDate()
 		return bundle.kextURL
 	}
 }
@@ -413,13 +434,14 @@ final class ViewController: NSViewController {
 		let view = NSGridView(numberOfColumns: 2, rows: 0)
 		
 		for port in PortMap.default.data {
-			let button = makePortSwitchButton(title: port.name, enabled: port.isEnabled)
+			let button = NSButton.makePortSwitchButton(title: port.name, enabled: port.isEnabled)
+			let label = NSTextField.makePortLabel(port.info)
 			button.target = self
 			button.action = #selector(Self.switchButtonPressed(_:))
 			button.bind(.value, to: port,
 				    withKeyPath: #keyPath(USBPort.isEnabled),
 				    options: [.validatesImmediately: true])
-			view.addRow(with: [button, makeLabel(port.info)])
+			view.addRow(with: [button, label])
 		}
 		
 		view.rowAlignment = .firstBaseline
@@ -441,7 +463,7 @@ final class ViewController: NSViewController {
 	}()
 	
 	override func loadView() {
-		view = NSWindow.mainWindow.contentView!
+		view = USBTool.mainWindow.contentView!
 	}
 	
 	override func viewDidLoad() {
@@ -486,27 +508,6 @@ final class ViewController: NSViewController {
 			}
 		}
 	}
-	
-	private func makePortSwitchButton(title: String, enabled: Bool) -> NSButton {
-		let button = NSButton()
-		button.title = title
-		button.setButtonType(.switch)
-		button.state = enabled ? .on : .off
-		button.invalidateIntrinsicContentSize()
-		return button
-	}
-	
-	private func makeLabel(_ stringValue: String) -> NSTextField {
-		let textField = NSTextField()
-		textField.drawsBackground = false
-		textField.isBezeled = false
-		textField.isEditable = false
-		textField.isSelectable = true
-		textField.textColor = NSColor.secondaryLabelColor
-		textField.stringValue = stringValue
-		textField.invalidateIntrinsicContentSize()
-		return textField
-	}
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -525,12 +526,42 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 }
 
-struct USBTool {
-	static func main() {
-		let window = NSWindow.mainWindow
+struct USBTool {	
+	public static let mainMenu: NSMenu = {
+		let processName = ProcessInfo.processInfo.processName
+		let appMenu = NSMenuItem(title: processName)
+		let editMenu = NSMenuItem(title: "Edit")
+		appMenu.submenu = NSMenu(title: processName, items: [
+			NSMenuItem(title: "About \(processName)",
+				   action: #selector(NSApplication.orderFrontStandardAboutPanel(_:))),
+			NSMenuItem.separator(),
+			NSMenuItem(title: "Quit \(processName)",
+				   action: #selector(NSApplication.terminate(_:)),
+				   keyEquivalent: "q")
+		])
+		editMenu.submenu = NSMenu(title: "Edit", items: [
+			NSMenuItem(title: "Copy",
+				   action: #selector(NSText.copy(_:)),
+				   keyEquivalent: "c")
+		])
+		return NSMenu(title: "Main Menu", items: [appMenu, editMenu])
+	}()	
+	
+	public static let mainWindow: NSWindow = {
+		let window = NSWindow()
+		window.title = kAppTitle
+		window.styleMask = [.titled, .closable]
+		window.miniaturizeButton?.isHidden = true
+		window.zoomButton?.isHidden = true
+		window.contentView?.widthAnchor.constraint(greaterThanOrEqualToConstant: kWindowWidth).isActive = true
+		return window
+	}()
+	
+	public static func main() {
+		let window = Self.mainWindow
 		NSApp = NSApplication.shared
 		NSApp.delegate = AppDelegate.shared
-		NSApp.mainMenu = NSMenu.mainMenu
+		NSApp.mainMenu = Self.mainMenu
 		NSApp.setActivationPolicy(.regular)
 		window.contentViewController = ViewController.shared
 		window.makeKeyAndOrderFront(self)
