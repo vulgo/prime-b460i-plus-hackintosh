@@ -107,10 +107,14 @@ let kInfoPlistSourceData = """
 	c+PGtleT5PU0J1bmRsZVJlcXVpcmVkPC9rZXk+PHN0cmluZz5Sb290PC9zdHJpbmc+PC9kaWN0PjwvcGxpc3Q+
 """
 let kWindowWidth: CGFloat = 360.0
+let kContentSpacing: CGFloat = 20.0
 let kPortListEdgeInsets = NSEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0)
 let kPortListColumnSpacing: CGFloat = 3.0
 let kPortListRowSpacing: CGFloat = 9.0
-let kContentSpacing: CGFloat = 20.0
+let kPortListViewLeading = kContentSpacing + kPortListEdgeInsets.left
+let kPortListViewTrailing = -(kContentSpacing + kPortListEdgeInsets.right)
+let kPortListViewTop = kContentSpacing + kPortListEdgeInsets.top
+let kPortListViewBottom = -(kContentSpacing + kPortListEdgeInsets.bottom)
 let kWriteButtonTitle = "Write Bundle to Desktop"
 let kWriteSuccessFormatString = "Wrote bundle to %@"
 #if compiler(<5.5)
@@ -459,6 +463,8 @@ final class ViewController: NSViewController {
 		button.bezelStyle = .rounded
 		button.title = kWriteButtonTitle
 		button.isEnabled = false
+		button.target = self
+		button.action = #selector(Self.writeButtonPressed(_:))
 		return button
 	}()
 	
@@ -467,22 +473,16 @@ final class ViewController: NSViewController {
 	}
 	
 	override func viewDidLoad() {
-		let portListViewLeading = kContentSpacing + kPortListEdgeInsets.left
-		let portListViewTrailing = -(kContentSpacing + kPortListEdgeInsets.right)
-		let portListViewTop = kContentSpacing + kPortListEdgeInsets.top
-		let portListViewBottom = -(kContentSpacing + kPortListEdgeInsets.bottom)
 		view.subviews = [portListView, writeButton]
-		writeButton.target = self
-		writeButton.action = #selector(Self.writeButtonPressed(_:))
-		enableWriteButton()
 		NSLayoutConstraint.activate([
-			portListView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: portListViewLeading),
-			portListView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: portListViewTrailing),
-			portListView.topAnchor.constraint(equalTo: view.topAnchor, constant: portListViewTop),
-			portListView.bottomAnchor.constraint(equalTo: writeButton.topAnchor, constant: portListViewBottom),
+			portListView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kPortListViewLeading),
+			portListView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: kPortListViewTrailing),
+			portListView.topAnchor.constraint(equalTo: view.topAnchor, constant: kPortListViewTop),
+			portListView.bottomAnchor.constraint(equalTo: writeButton.topAnchor, constant: kPortListViewBottom),
 			writeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -kContentSpacing),
 			writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kContentSpacing)
 		])
+		enableWriteButton()
 	}
 	
 	private func enableWriteButton() {
