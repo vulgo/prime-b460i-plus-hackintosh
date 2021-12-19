@@ -144,7 +144,7 @@ At the picker, **press space**, choose `Reset NVRAM`.
 
 Reset NVRAM at first boot and **whenever the bootloader files have changed**.
 
-## Post-Install
+# Post-Install
 
 ### USB
 
