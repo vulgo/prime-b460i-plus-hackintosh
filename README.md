@@ -4,6 +4,7 @@ OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherb
 
 #### Notes
 
+- [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
 - WiFi and Bluetooth work natively in macOS 12 with m.2 Broadcom BCM94360NG
 - Using more than one display on Intel HD630 graphics has issues
 
