@@ -2,11 +2,25 @@
 
 OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherboard.
 
-#### Notes
-
+<details><summary><strong>Notes</strong></summary><br>
+  
 - [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
 - WiFi and Bluetooth work natively in macOS 12 with m.2 Broadcom BCM94360NG
 - Using more than one display on Intel HD630 graphics has issues
+
+</details>
+
+<details><summary><strong>Credits</strong></summary><br>
+
+- [acidanthera](https://github.com/acidanthera)
+- [apple](https://github.com/apple)
+- [corpnewt](https://github.com/corpnewt)
+- [dortania](https://github.com/dortania)
+- [mieze](https://github.com/Mieze)
+- [Piker-Alpha](https://github.com/Piker-Alpha)
+- [RehabMan](https://github.com/RehabMan)
+
+</details>
 
 ## Firmware Settings
 
@@ -43,7 +57,7 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 
 Edit the ```DeviceProperties``` section of your config.plist according to your configuration.
 
-#### Connectorless (using PCIe AMD GPU)
+<details><summary><strong>Connectorless (using PCIe AMD GPU)</strong></summary><br>
 
 ```xml
 ...
@@ -63,9 +77,9 @@ Edit the ```DeviceProperties``` section of your config.plist according to your c
 ...
 ```
 
-Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#deviceproperties)
+</details>
 
-#### Attached Display
+<details><summary><strong>Attached Display</strong></summary><br>
 
 ```xml
 ...
@@ -94,6 +108,8 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 </dict>
 ...
 ```
+
+</details>
 
 Refer to [README-Intel-Graphics.md](/README/README-Intel-Graphics.md)
 
@@ -161,14 +177,3 @@ Refer to [github.com/acidanthera/NVMeFix](https://github.com/acidanthera/NVMeFix
 ### Dortania Post-Install
 
 Refer to [dortania.github.io/OpenCore-Post-Install/](https://dortania.github.io/OpenCore-Post-Install/)
-
-## Credits
-
-- [acidanthera](https://github.com/acidanthera)
-- [apple](https://github.com/apple)
-- [corpnewt](https://github.com/corpnewt)
-- [dortania](https://github.com/dortania)
-- [mieze](https://github.com/Mieze)
-- [Piker-Alpha](https://github.com/Piker-Alpha)
-- [RehabMan](https://github.com/RehabMan)
-

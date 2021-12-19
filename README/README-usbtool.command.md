@@ -16,7 +16,9 @@ After completing the OpenCore `config.plist` according to [README.md](/README.md
 - mount the EFI system partition
 - replace `USBPorts.kext` in `/Volumes/EFI/EFI/OC/Kexts` with the version from the desktop
 
-### USB 2 Port Locations
+## Port Locations
+
+<details><summary><strong>USB 2</strong></summary><br>
 
 | Port | Location                   |
 |:-----|:---------------------------|
@@ -32,7 +34,9 @@ After completing the OpenCore `config.plist` according to [README.md](/README.md
 | HS10 | USB 2 header               |
 | HS12 | m.2 E key                  |
 
-## USB 3 Port Locations
+<br></details>
+
+<details><summary><strong>USB 3</strong></summary><br>
 
 | Port | Location                   |
 |:-----|:---------------------------|
@@ -42,6 +46,8 @@ After completing the OpenCore `config.plist` according to [README.md](/README.md
 | SS04 | Rear panel USB 3 connector |
 | SS05 | Rear panel USB 3 connector |
 | SS06 | Rear panel USB 3 connector |
+
+<br></details>
 
 ## Sunrise Point
 
