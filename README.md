@@ -115,6 +115,12 @@ Refer to [README-Intel-Graphics.md](/README/README-Intel-Graphics.md)
 
 ## SMBIOS
 
+<details><summary><strong>What's this?</strong></summary>
+
+OpenCore will generate a complete [SMBIOS](https://en.wikipedia.org/wiki/System_Management_BIOS) for your system according to information provided in the `PlatformInfo` section of `config.plist` and a dataset derived from Apple firmwares. `GenSMBIOS` is a python script that uses acidanthera's `macserial` to generate required serials and unique identifiers.
+
+</details>
+
 Edit the `PlatformInfo` section of your config.plist so that the `MLB`, `ROM`, `SystemSerialNumber` and `SystemUUID` values are unique to your machine.
 
 ```xml
