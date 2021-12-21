@@ -81,6 +81,8 @@ Edit the ```DeviceProperties``` section of your config.plist according to your c
 
 <details><summary><strong>Attached Display</strong></summary><br>
 
+Intel graphics should work well with a single display. Prefer DisplayPort instead of HDMI where possible.
+
 ```xml
 ...
 <key>DeviceProperties</key>
@@ -109,9 +111,9 @@ Edit the ```DeviceProperties``` section of your config.plist according to your c
 ...
 ```
 
-</details>
-
 Refer to [README-Intel-Graphics.md](/README/README-Intel-Graphics.md)
+
+</details>
 
 ## SMBIOS
 

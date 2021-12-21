@@ -1,12 +1,12 @@
 # Intel Graphics
 
-Intel graphics should work well with a single display. Prefer DisplayPort instead of HDMI where possible.
-
-#### Sources
+<details><summary><strong>Sources</strong></summary>
 
 - [acidanthera/WhateverGreen/README](https://github.com/acidanthera/WhateverGreen/blob/master/README.md)
 - [acidanthera/WhateverGreen/FAQ/IntelHD](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 - [acidanthera/WhateverGreen/FAQ/Shiki](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Shiki.en.md)
+
+</details>
 
 ### Workarounds for graphics failures after booting with two displays
 
