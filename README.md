@@ -12,14 +12,15 @@ OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherb
 
 <details><summary><strong>In-scope</strong></summary><br>
 
-- Supported graphics hardware
+- Accelerated video on supported Intel and AMD GPUs
 - Built-in audio
-- Built-in ethernet ports
-- Wireless hardware natively supported
+- Built-in ethernet
+- Airport and Bluetooth using a natively supported device
 - CPU power management
-- macOS installation
-- Built-in USB ports
-- Sleep, wake, shutdown (ACPI S0, S3, S5)
+- USB
+- System wake, sleep, and shutdown
+- macOS installation and updates
+- System stability
 
 </details>
     
@@ -28,10 +29,9 @@ OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherb
 - [Apple ID problems](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
 - UEFI Secure Boot
 - [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html)
-- Wireless hardware not natively supported
+- Airport and Bluetooth using a device that is not natively supported
 - [DRM and hardware video decoding or encoding](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Shiki.en.md)
 - [NVMe problems](https://github.com/acidanthera/NVMeFix)
-- Hibernation (ACPI S4)
 
 </details>
 
@@ -83,6 +83,8 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 Edit the ```DeviceProperties``` section of your config.plist according to your configuration.
 
 <details><summary><strong>Connectorless (using PCIe AMD GPU)</strong></summary><br>
+    
+The default `config.plist` in this repo is configured in this way.
 
 ```xml
 ...
@@ -182,8 +184,6 @@ Edit the `PlatformInfo` section of your config.plist so that the `MLB`, `ROM`, `
 | SystemUUID                   | \**SmUUID*                |
 
 \* *GenSMBIOS output, iMac20,1*
-
-Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo)
 
 GenSMBIOS: [github.com/corpnewt/GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 
