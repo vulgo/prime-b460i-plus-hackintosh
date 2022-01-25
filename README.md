@@ -1,12 +1,14 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherboard.
+OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 12 working well on compatible hardware.
 
 <details><summary><strong>Notes</strong></summary><br>
-  
+
+- For features listed as `in-scope` that are not working as expected, it may be beneficial for all to open an issue here
+- Where something is listed as `out-of-scope` more explicit information will surely be found in various places across the internet, or in the OpenCore documentation
 - [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
 - WiFi and Bluetooth work natively in macOS 12 with m.2 Broadcom BCM94360NG
-- Using more than one display on Intel HD630 graphics has issues
+- Using more than one display with Intel HD 630 has issues
 
 </details>
 
