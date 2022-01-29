@@ -58,10 +58,12 @@ Use ASUS firmware version 1003 or newer.
 | Field                                             | Value     |
 |:--------------------------------------------------|----------:|
 | VT-d                                              | Enabled   |
-| Graphics Configuration &#8594; DVMT Pre-Allocated | 64M       |
+| Graphics Configuration &#8594; DVMT Pre-Allocated | *64M\**   |
 | USB Configuration &#8594; Legacy USB Support      | Disabled  |
 | USB Configuration &#8594; XHCI Handoff            | Enabled   |
 | Onboard Devices Configuration &#8594; Serial Port | Off       |
+
+*\* 64M HD 630 Graphics, 32M connectorless*
 
 ###### Advanced &#8594; System Agent (SA) Configuration - using discrete graphics
 
