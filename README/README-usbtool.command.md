@@ -1,29 +1,31 @@
 # usbtool.command
 
-<img src="usbtool.png" width="472" height="629" alt="USB Tool screenshot" />
+<img src="usbtool.png" width="472" alt="USB Tool screenshot" />
 
 <details><summary><strong>What's this?</strong></summary>
 
-`usbtool.command` is basically a graphical property list editor exposing a hard-coded list of all 17 USB ports available on B460i-PLUS. The generated `USBPorts.kext` is intended to be used in combination with `SSDT-USBX`, `SSDT-xh_cmvd4` and `config.plist` in this repository. Faking an `EC` device for `USBX` is not required on recent macOS.
+A graphical property list editor, `usbtool.command` exposes only a hard-coded list of the 17 USB ports available on B460i-PLUS. The generated `USBPorts.kext` is intended to be used in combination with `SSDT-USBX`, `SSDT-xh_cmvd4` and `config.plist` in this repository. Creating a dummy `EC` device is not required with recent versions of macOS.
 
- - `IOUSBHostFamily` class `AppleUSBHostResources` resource-matches on `IORTC`
- - `AppleUSBHostResources` takes care of the host controller power-related device properties provided by device `USBX` in `SSDT-USBX`
- - `USBPorts.kext` matches on device `XHC` and is intended to provide port mapping of 15 or fewer ports
- 
+- OpenCore adds a compatible device ID for the 200 series host controller
+- OpenCore replaces `SSDT-xh_cmvd4` with a working table
+- `IOUSBHostFamily` class `AppleUSBHostResources` resource-matches on `IORTC`
+- `AppleUSBHostResources` handles the host controller power-related device properties in `SSDT-USBX`
+- `USBPorts.kext` matches on device `XHC` to provide a mapping of 15 or fewer ports
+
 <br>
 
 </details>
 
-After completing the OpenCore `config.plist` according to [README.md](/README.md) and installing macOS the following procedure will generate a valid `USBPorts.kext`
+After completing the OpenCore `config.plist` according to [README.md](/README.md) and installing macOS, the following procedure will generate a valid `USBPorts.kext`
 
 #### Run usbtool.command
 
 - boot the B460i-PLUS system into macOS
-- run `usbtool.command` located in the root directory of this repository
+- run `usbtool.command` found in the root directory of this repository
 - keep within the 15 port limit by switching off at least 2 ports
 - press the button to generate `USBPorts.kext` on the desktop
 
-#### Install USBPorts.kext to the Bootloader Kexts Directory
+#### Replace USBPorts.kext in the OpenCore Kexts Directory
 
 - mount the EFI system partition
 - replace `USBPorts.kext` in `/Volumes/EFI/EFI/OC/Kexts` with the version from the desktop
