@@ -6,8 +6,8 @@
 
 A graphical property list editor, `usbtool.command` exposes only a hard-coded list of the 17 USB ports available on B460i-PLUS. The generated `USBPorts.kext` is intended to be used in combination with `SSDT-USBX`, `SSDT-xh_cmvd4` and `config.plist` in this repository. Creating a dummy `EC` device is not required with recent versions of macOS.
 
-- OpenCore adds a compatible device ID for the 200 series host controller
-- OpenCore replaces `SSDT-xh_cmvd4` with a working table
+- OpenCore adds a compatible device ID for the 200 series host controller on this board
+- OpenCore replaces the stock `xh_cmvd4` with a valid table
 - `IOUSBHostFamily` class `AppleUSBHostResources` resource-matches on `IORTC`
 - `AppleUSBHostResources` handles the host controller power-related device properties in `SSDT-USBX`
 - `USBPorts.kext` matches on device `XHC` to provide a mapping of 15 or fewer ports
