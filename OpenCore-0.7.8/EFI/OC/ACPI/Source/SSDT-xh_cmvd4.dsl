@@ -1,3 +1,7 @@
+/*
+ *  Refer to README-SSDT-xh_cmvd4
+ */
+
 DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
 {
     External (_SB_.PCI0.XHC_.RHUB, DeviceObj)
@@ -134,7 +138,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
         
         Method (GPLD, 2, NotSerialized)
         {
-            Local0 = Package () {
+            Local0 = Package (One) {
                 Buffer (0x10) {}
             }
                         
@@ -159,365 +163,287 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
             Return (Local0)
         }
 
-        Scope (HS01)
+        Method (HS01._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H1CN, H1CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H1VS, H1GP))
-            }
+            Return (GUPC (H1CN, H1CT))
         }
 
-        Scope (HS02)
+        Method (HS01._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H2CN, H2CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H2VS, H2GP))
-            }
+            Return (GPLD (H1VS, H1GP))
         }
 
-        Scope (HS03)
+        Method (HS02._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H3CN, H3CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H3VS, H3GP))
-            }
+            Return (GUPC (H2CN, H2CT))
         }
 
-        Scope (HS04)
+        Method (HS02._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H4CN, H4CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H4VS, H4GP))
-            }
+            Return (GPLD (H2VS, H2GP))
         }
 
-        Scope (HS05)
+        Method (HS03._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H5CN, H5CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H5VS, H5GP))
-            }
+            Return (GUPC (H3CN, H3CT))
         }
 
-        Scope (HS06)
+        Method (HS03._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H6CN, H6CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H6VS, H6GP))
-            }
+            Return (GPLD (H3VS, H3GP))
         }
 
-        Scope (HS07)
+        Method (HS04._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H7CN, H7CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H7VS, H7GP))
-            }
+            Return (GUPC (H4CN, H4CT))
         }
 
-        Scope (HS08)
+        Method (HS04._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H8CN, H8CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H8VS, H8GP))
-            }
+            Return (GPLD (H4VS, H4GP))
         }
 
-        Scope (HS09)
+        Method (HS05._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (H9CN, H9CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (H9VS, H9GP))
-            }
+            Return (GUPC (H5CN, H5CT))
         }
 
-        Scope (HS10)
+        Method (HS05._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (HACN, HACT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (HAVS, HAGP))
-            }
+            Return (GPLD (H5VS, H5GP))
         }
 
-        Scope (USR1)
+        Method (HS06._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
+            Return (GUPC (H6CN, H6CT))
         }
 
-        Scope (USR2)
+        Method (HS06._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
+            Return (GPLD (H6VS, H6GP))
         }
 
-        Scope (SS01)
+        Method (HS07._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (S1CN, S1CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (S1VS, S1GP))
-            }
+            Return (GUPC (H7CN, H7CT))
         }
 
-        Scope (SS02)
+        Method (HS07._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (S2CN, S2CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (S2VS, S2GP))
-            }
+            Return (GPLD (H7VS, H7GP))
         }
 
-        Scope (SS03)
+        Method (HS08._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (S3CN, S3CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (S3VS, S3GP))
-            }
+            Return (GUPC (H8CN, H8CT))
         }
 
-        Scope (SS04)
+        Method (HS08._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (S4CN, S4CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (S4VS, S4GP))
-            }
+            Return (GPLD (H8VS, H8GP))
         }
 
-        Scope (SS05)
+        Method (HS09._UPC, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (S5CN, S5CT))
-            }
-
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (S5VS, S5GP))
-            }
+            Return (GUPC (H9CN, H9CT))
         }
 
-        Scope (SS06)
+        Method (HS09._PLD, 0, NotSerialized)
         {
-            Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (S6CN, S6CT))
-            }
+            Return (GPLD (H9VS, H9GP))
+        }
 
-            Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (S6VS, S6GP))
-            }
+        Method (HS10._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (HACN, HACT))
+        }
+
+        Method (HS10._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (HAVS, HAGP))
+        }
+
+        Method (USR1._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (Zero, 0xFF))
+        }
+
+        Method (USR1._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (Zero, Zero))
+        }
+
+        Method (USR2._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (Zero, 0xFF))
+        }
+
+        Method (USR2._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (Zero, Zero))
+        }
+
+        Method (SS01._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (S1CN, S1CT))
+        }
+
+        Method (SS01._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (S1VS, S1GP))
+        }
+
+        Method (SS02._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (S2CN, S2CT))
+        }
+
+        Method (SS02._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (S2VS, S2GP))
+        }
+
+        Method (SS03._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (S3CN, S3CT))
+        }
+
+        Method (SS03._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (S3VS, S3GP))
+        }
+
+        Method (SS04._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (S4CN, S4CT))
+        }
+
+        Method (SS04._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (S4VS, S4GP))
+        }
+
+        Method (SS05._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (S5CN, S5CT))
+        }
+
+        Method (SS05._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (S5VS, S5GP))
+        }
+
+        Method (SS06._UPC, 0, NotSerialized)
+        {
+            Return (GUPC (S6CN, S6CT))
+        }
+
+        Method (SS06._PLD, 0, NotSerialized)
+        {
+            Return (GPLD (S6VS, S6GP))
         }
 
         If (CondRefOf (HS11))
         {
-            Scope (HS11)
+            Method (HS11._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (HS11._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
 
         If (CondRefOf (HS12))
         {
-            Scope (HS12)
+            Method (HS12._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (HCCN, HCCT))
-                }
+                Return (GUPC (HCCN, HCCT))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (HCVS, HCGP))
-                }
+            Method (HS12._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (HCVS, HCGP))
             }
         }
 
         If (CondRefOf (HS13))
         {
-            Scope (HS13)
+            Method (HS13._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (HS13._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
 
         If (CondRefOf (HS14))
         {
-            Scope (HS14)
+            Method (HS14._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (HS14._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
 
         If (CondRefOf (SS07))
         {
-            Scope (SS07)
+            Method (SS07._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (SS07._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
 
         If (CondRefOf (SS08))
         {
-            Scope (SS08)
+            Method (SS08._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (SS08._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
 
         If (CondRefOf (SS09))
         {
-            Scope (SS09)
+            Method (SS09._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (SS09._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
 
         If (CondRefOf (SS10))
         {
-            Scope (SS10)
+            Method (SS10._UPC, 0, NotSerialized)
             {
-                Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                {
-                    Return (GUPC (Zero, 0xFF))
-                }
+                Return (GUPC (Zero, 0xFF))
+            }
 
-                Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                {
-                    Return (GPLD (Zero, Zero))
-                }
+            Method (SS10._PLD, 0, NotSerialized)
+            {
+                Return (GPLD (Zero, Zero))
             }
         }
     }

@@ -1,3 +1,10 @@
+/*
+ *  May be useful with certain Intel wireless
+ *  hardware on certain OS drivers
+ *
+ *  List of devices in README-SSDT-xh_cmvd4
+ */
+
 DefinitionBlock ("", "SSDT", 1, "vulgo", "IntWfiBt", 1)
 {
     External (_SB_.PCI0.RP11.PXSX.WIST, MethodObj)
@@ -33,6 +40,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "IntWfiBt", 1)
                         0x80000000
                     }
                 })
+
                 Method (SADS, 0, Serialized)
                 {
                     DerefOf (SADX [One]) [One] = ATDV
@@ -55,6 +63,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "IntWfiBt", 1)
                         0x80
                     }
                 })
+
                 Method (BRDS, 0, Serialized)
                 {
                     DerefOf (BRDY [One]) [One] = BTSE
@@ -76,6 +85,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "IntWfiBt", 1)
                         Zero
                     }
                 })
+
                 Method (ECKV, 0, Serialized)
                 {
                     DerefOf (ECKY [One]) [One] = CECV
@@ -107,6 +117,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "IntWfiBt", 1)
                         }
                     }
                 })
+
                 Method (GPC, 0, Serialized)
                 {
                     Return (GPCX)

@@ -1,15 +1,17 @@
+/*
+ *  Enables RTC
+ *  Conflicts with SSDT-AWAC-HPET-DISABLE, one is required
+ */
+
 DefinitionBlock ("", "SSDT", 1, "vulgo", "AwacSsdt", 1)
 {
     External (STAS, IntObj)
     
-    Scope (_SB)
+    Method (_SB._INI, 0, NotSerialized)
     {
-        Method (_INI, 0, NotSerialized)
+        If (_OSI ("Darwin"))
         {
-            If (_OSI ("Darwin"))
-            {
-                STAS = One
-            }
+            STAS = One
         }
     }
 }

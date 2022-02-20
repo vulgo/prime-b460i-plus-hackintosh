@@ -8,11 +8,11 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>Enable AppleRTC</string>
+				<string>Enable AppleRTC and disable HPET</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-AWAC-DISABLE.aml</string>
+				<string>SSDT-AWAC-HPET-DISABLE.aml</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
