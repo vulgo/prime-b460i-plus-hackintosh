@@ -42,7 +42,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
 
 ## Intel Wireless Cards
 
-<details><summary>Code specific to the following devices was moved from <code>SSDT-xh_cmvd4</code> to a separate SSDT <code>SSDT-INTEL-WIFI-BT</code></summary><br />
+<details><summary>Code specific to the following devices was moved from <code>SSDT-xh_cmvd4</code> to a separate SSDT <code>SSDT-AC-WIRELESS-INTEL</code></summary><br />
 
 - 0x095A Wireless-AC 7265
 - 0x095B Wireless-AC 7265
