@@ -18,8 +18,9 @@ OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherb
 - Built-in audio
 - Built-in ethernet
 - Airport and Bluetooth using a natively supported device
-- CPU power management
 - USB
+- CPU power management
+- PCIe active-state power management
 - System wake, sleep, and shutdown
 - macOS installation and updates
 - System stability
@@ -31,7 +32,7 @@ OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherb
 - [Apple ID problems](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
 - UEFI Secure Boot
 - [OpenCore Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html)
-- Airport and Bluetooth using a device that is not natively supported
+- [Airport and Bluetooth using a device that is not natively supported](https://github.com/acidanthera/AirportBrcmFixup)
 - [DRM and hardware video decoding or encoding](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Shiki.en.md)
 - [NVMe problems](https://github.com/acidanthera/NVMeFix)
 
