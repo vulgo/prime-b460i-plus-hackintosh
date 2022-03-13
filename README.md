@@ -32,7 +32,9 @@ OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherb
 - [Apple ID problems](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
 - UEFI Secure Boot
 - [OpenCore Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html)
-- [Airport and Bluetooth using a device that is not natively supported](https://github.com/acidanthera/AirportBrcmFixup)
+- Airport and Bluetooth using a device that is not natively supported
+    - [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
+    - [OpenIntelWireless](https://github.com/OpenIntelWireless)
 - [DRM and hardware video decoding or encoding](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Shiki.en.md)
 - [NVMe problems](https://github.com/acidanthera/NVMeFix)
 
