@@ -6,10 +6,11 @@
 DefinitionBlock ("", "SSDT", 1, "vulgo", "AwacSsdt", 1)
 {
     External (STAS, IntObj)
+    External (_SB._INI, MethodObj)
     
-    Method (_SB._INI, 0, NotSerialized)
+    If (_OSI ("Darwin") && !CondRefOf (_SB._INI))
     {
-        If (_OSI ("Darwin"))
+        Method (_SB._INI, 0, NotSerialized)
         {
             STAS = One
         }
