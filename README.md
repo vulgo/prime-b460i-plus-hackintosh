@@ -1,5 +1,7 @@
 # Prime B460i-PLUS hackintosh
 
+**macOS 13 is not supported by this repository at this time. Branch next exists which has been updated to OpenCore 0.8.5 for testing Ventura installation and USB support which is unconfirmed**
+
 OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 12 working well on compatible hardware.
 
 <details><summary><strong>Notes</strong></summary><br>
