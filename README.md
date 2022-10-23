@@ -1,6 +1,6 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS 12 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 12 working well on compatible hardware.
+OpenCore configuration for running macOS 13 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 13 working well on compatible hardware.
 
 <details><summary><strong>Notes</strong></summary><br>
 
