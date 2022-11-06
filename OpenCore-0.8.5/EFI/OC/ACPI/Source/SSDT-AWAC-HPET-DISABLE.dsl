@@ -9,7 +9,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "AwacHpet", 1)
     External (HPTE, IntObj)
     External (_SB._INI, MethodObj)
     
-    If (_OSI ("Darwin") && !CondRefOf (_SB._INI))
+    If (_OSI ("Darwin"))
     {
         Method (_SB._INI, 0, NotSerialized)
         {
