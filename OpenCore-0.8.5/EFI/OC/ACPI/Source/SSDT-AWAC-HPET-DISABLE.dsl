@@ -7,7 +7,6 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "AwacHpet", 1)
 {
     External (STAS, IntObj)
     External (HPTE, IntObj)
-    External (_SB._INI, MethodObj)
     
     If (_OSI ("Darwin"))
     {
