@@ -1,5 +1,134 @@
 OpenCore Changelog
 ==================
+#### v0.9.5
+- Fixed GUID formatting for legacy NVRAM saving
+- Fixed inability to open files in root directory on an NTFS filesystem
+- Fixed hang while unloading NTFS driver
+- Added UEFI quirk `ShimRetainProtocol`, allowing OpenCore chained from shim to verify Linux using shim's certificates
+- Added `OpenLegacyBoot` driver for supporting legacy OS booting
+- Added `shim-make.tool` to download and build rhboot/shim, for Linux SBAT and MOK integration
+
+#### v0.9.4
+- Fixed kext blocker `Exclude` strategy for prelinked on 32-bit versions of macOS
+- Fixed `ForceAquantiaEthernet` quirk on macOS 14 beta 2, thx @Shikumo
+- Added `InstanceIdentifier` to OpenCore and option to target `.contentVisibility` to specific instances (thx @dakanji)
+- Improved `LapicKernelPanic` quirk on legacy versions of macOS
+- Allowed `.contentVisibility` in same boot FS root locations as `.VolumeIcon.icns`, in order to survive macOS updates
+- Fixed incorrect core count on Silvermont Atom/Celeron processors
+- Fixed PM timer detection on Silvermont Atom/Celeron processors for TSC calculations
+- Fixed PM timer detection on non-Intel chipsets when booted through OpenDuet
+- Fixed `FadtEnableReset` on NVIDIA nForce chipset platforms
+- Added BlockIoDxe alternative OpenDuet variant
+- Added support for ATI cards when using `ForceResolution` option
+
+#### v0.9.3
+- Added `--force-codec` option to AudioDxe, thx @xCuri0
+- Downgraded additional warning message in normal operation of emulated NVRAM to info
+- Disabled not present DVL0 device in SSDT-SBUS-MCHC by default, thx @stevezhengshiqi
+- Added EFI mandated box drawing, block element and arrow characters to `Builtin` renderer console font
+- Improved support for overlong menu entries and very narrow console modes in builtin picker
+- Made `Builtin` text renderer ignore UI Scale, when required to ensure that text mode reaches minimum UEFI supported size of 80x25
+- Added save and restore of text and graphics mode round tools and failed boot entries
+- Updated out-of-range cursor handling to work round minor display issue in memtest86
+- Added optional `--enable-mouse-click` argument to `CrScreenshotDxe` driver to additionally respond on mouse click
+- Added `--use-conn-none` option to `AudioDxe` driver to discover additional usable output channels on some systems
+- Added `PciIo` protocol override used to fix Aptio IV compatiblity with Above 4G BARs, thx @xCuri0
+- Fixed `AppleXcpmForceBoost` quirk on macOS 14
+- Updated builtin firmware versions for SMBIOS and the rest
+- Added `ConsoleFont` option to load custom console font for `Builtin` renderer
+- Improved `XhciPortLimit` quirk on macOS 11 to 14
+
+#### v0.9.2
+- Added `DisableIoMapperMapping` quirk, thx @CaseySJ
+- Fixed disabling single user mode when Apple Secure Boot is enabled
+- Improved guard checks for `GopBurstMode` on systems where it's not needed
+- Improved compatibility of `GopBurstMode` with some very non-standard GOP implementations
+- Fixed possible hang with `GopBurstMode` enabled on DEBUG builds
+- Enabled `GopBurstMode` even with natively supported cards, in EnableGop firmware driver
+- Fixed inability to patch force-injected kexts
+- Fixed `ExternalDiskIcons` quirk on macOS 13.3+, thx @fusion71au
+- Fixed various recent reversions and some longer-standing minor bugs in `Builtin` text renderer
+- Applied some additional minor optimizations to `Builtin` text renderer
+- Implemented `InitialMode` option to allow fine control over text renderer operating mode
+- Added support for `ConsoleMode` text resolution setting to `Builtin` renderer
+- Fixed regression for ACPI quirks `RebaseRegions` and `SyncTableIds`
+- Updated build process to provide stable and bleeding-edge versions of `EnableGop`
+- Implemented minor improvements in `PickerMode` `Apple`
+- Improved filtering algorithm for `LogModules` and added `?` filter for matching non-standard log lines
+- Fixed crash when gathering system report on virtualised CPUs
+- Fixed unnecessary warning when first booting with emulated NVRAM
+- Enabled `AppleCpuPmCfgLock` quirk on macOS 13
+
+#### v0.9.1
+- Fixed long comment printing for ACPI patches, thx @corpnewt
+- Added sample config for VS Code source level debugging with `gdb`
+- Updated builtin firmware versions for SMBIOS and the rest
+- Added GOP memory caching report to `SysReport`
+- Implemented `GopBurstMode` quirk for faster GOP operation on older firmware
+- Fixed `ThirdPartyDrives` quirk on macOS 13.3 and above
+
+#### v0.9.0
+- Resolved issues with verbose boot log appearing over picker graphics
+- Added version number to EnableGop UI section, so tool builders can track it
+- Added `ProvideCurrentCpuInfo` support for macOS 13.3 DP
+- Added AMD support, GOP offset auto-detection and macOS 10.11+ support to EnableGop vBIOS insertion script
+- Included precompiled EDK-II `EfiRom` and `GenFfs` in `Utilities/BaseTools` with OpenCore releases
+
+#### v0.8.9
+- Improved debug logging when applying ACPI patches
+- Fixed loading macOS with legacy boot without Apple Secure Boot
+- Added Linux support to legacy boot BootInstall script
+- Updated builtin firmware versions for SMBIOS and the rest
+- Fixed incomplete console mode initialisation when started in graphics mode
+- Provided additional UEFI forge mode, for use in firmware drivers
+- Implemented firmware driver enabling pre-OpenCore graphics on non-natively supported GPUs on EFI-era Macs
+- Added `ResizeUsePciRbIo` quirk to workaround broken PciIo on some UEFI firmwares, thx @xCuri0
+- Prevented unwanted clear screen to console background colour when in graphics mode
+- Fixed crash while using `SysReport` on older Atom systems
+- Fixed kexts without a Contents folder not being patched during a cacheless boot
+- Added read-only sections (`.rdata`) to all drivers for better memory protection when supported
+- Fixed crash while using `SysReport` on systems with non-audio HDA codecs
+- Fixed debug script support for GDB and LLDB
+- Fixed legacy boot debug builds asserting on macOS loading
+
+#### v0.8.8
+- Updated underlying EDK II package to edk2-stable202211
+- Updated AppleKeyboardLayouts.txt from macOS 13.1
+- Updated builtin firmware versions for SMBIOS and the rest
+- Updated ocvalidate to allow duplicate tool if FullNvramAccess is different
+- Fixed `Kernel` -> `Block` entries not being processed if one was skipped due to `Arch`
+- Fixed intermittent prelinking failures caused by XML corruption when kext blocking is enabled
+- Removed magic Acidanthera sequence from OpenCore files used for picker hiding
+- Added `.contentVisibility` to hide and disable boot entries
+- Added Linux support to QemuBuild.command used for Duet debugging
+- Built in new secure PE/COFF loader
+- Added prebuilt mtoc universal binary with Apple Silicon support
+- Corrected OpenDuet build on Apple Silicon
+- Added SD card device path support for boot device selection
+
+#### v0.8.7
+- Removed unwanted clear screen when launching non-text boot entry
+- Fixed TSC/FSB for AMD CPUs in ProvideCurrentCpuInfo, thx @Shaneee
+- Added `Misc` -> `Boot` -> `HibernateSkipsPicker` not to show picker if waking from macOS hibernation
+- Changed macrecovery to download files into `com.apple.recovery.boot` by default, thx @dreamwhite
+- Supported Apple native picker (using `BootKicker.efi` or `PickerMode` `Apple`) when running GPUs without Mac-EFI support on units such as the MacPro5,1 (thx @cdf, @tsialex)
+- Enabled `PickerMode` `Apple` to successfully launch selected entry
+- Enabled `BootKicker.efi` to successfully launch selected entry (via reboot) (thx @cdf)
+- Added spoof proof UEFI 2.x checking to OpenVariableRuntimeDxe, thx @dakanji
+
+#### v0.8.6
+- Updated NVRAM save script for compatibilty with earlier macOS (Snow Leopard+ tested)
+- Updated NVRAM save script to automatically install as launch daemon (Yosemite+) or logout hook (older macOS)
+- Fixed maximum click duration and double click speed for non-standard poll frequencies
+- Added support for pointer dwell-clicking
+- Fixed recursive loop crash at first non-early log line on some systems
+- Fixed early log preservation when using unsafe fast file logging
+- Updated builtin firmware versions for SMBIOS and the rest
+- Resolved wake-from-sleep failure on EFI 1.1 systems (including earlier Macs) with standalone emulated NVRAM driver
+- Updated macrecovery commands with macOS 12 and 13, thx @Core-i99
+- Updates SSDT-BRG0 with macOS-specific STA to avoid compatibility issues on Windows, thx @Lorys89
+- Fixed memory issues in OpenLinuxBoot causing crashes on 32-bit UEFI firmware
+
 #### v0.8.5
 - Updated builtin firmware versions for SMBIOS and the rest
 - Moved CPU objects that exist only in Windows Server 2022 into `SSDT-HV-DEV-WS2022.dsl`
@@ -278,7 +407,7 @@ OpenCore Changelog
 - Fixed ACPI table magic corruption during patching
 - Fixed unnatural OpenCanopy and FileVault 2 cursor movement
 - Fixed OpenCanopy interrupt handling causing missed events and lag
-- Improved OpenCanopy double-click detection 
+- Improved OpenCanopy double-click detection
 - Reduced OpenCanopy touch input lag and improved usability
 - Improved keypress responsiveness in OpenCanopy and builtin pickers
 - Improved non-repeating key detection in OpenCanopy and builtin pickers
