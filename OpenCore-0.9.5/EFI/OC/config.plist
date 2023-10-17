@@ -150,19 +150,16 @@
 	<dict>
 		<key>Add</key>
 		<dict>
-			<!-- 200 series USB controller: add supported device ID -->
 			<key>PciRoot(0x0)/Pci(0x14,0x0)</key>
 			<dict>
 				<key>device-id</key>
 				<data>r6IAAA==</data>
 			</dict>
-			<!-- Built in audio: add layout-id -->
 			<key>PciRoot(0x0)/Pci(0x1F,0x3)</key>
 			<dict>
 				<key>layout-id</key>
 				<data>AwAAAA==</data>
 			</dict>
-			<!-- Intel HD Graphics: add device properties -->
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>AAPL,ig-platform-id</key>
@@ -356,6 +353,8 @@
 			<false/>
 			<key>DisableIoMapper</key>
 			<true/>
+			<key>DisableIoMapperMapping</key>
+			<false/>
 			<key>DisableLinkeditJettison</key>
 			<true/>
 			<key>DisableRtcChecksum</key>
@@ -409,8 +408,12 @@
 			<integer>0</integer>
 			<key>HibernateMode</key>
 			<string>None</string>
+			<key>HibernateSkipsPicker</key>
+			<false/>
 			<key>HideAuxiliary</key>
 			<true/>
+			<key>InstanceIdentifier</key>
+			<string></string>
 			<key>LauncherOption</key>
 			<string>Full</string>
 			<key>LauncherPath</key>
@@ -637,6 +640,12 @@
 			<integer>1</integer>
 			<key>PointerSpeedMul</key>
 			<integer>1</integer>
+			<key>PointerDwellClickTimeout</key>
+			<integer>0</integer>
+			<key>PointerDwellDoubleClickTimeout</key>
+			<integer>0</integer>
+			<key>PointerDwellRadius</key>
+			<integer>0</integer>
 		</dict>
 		<key>Audio</key>
 		<dict>
@@ -737,11 +746,17 @@
 		</dict>
 		<key>Output</key>
 		<dict>
+			<key>InitialMode</key>
+			<string>Auto</string>
+			<key>ConsoleFont</key>
+			<string>TerminusCore</string>
 			<key>ClearScreenOnModeSwitch</key>
 			<false/>
 			<key>ConsoleMode</key>
-			<string></string>
+			<string>80x50</string>
 			<key>DirectGopRendering</key>
+			<false/>
+			<key>GopBurstMode</key>
 			<false/>
 			<key>ForceResolution</key>
 			<false/>
@@ -804,6 +819,8 @@
 			<false/>
 			<key>OSInfo</key>
 			<false/>
+			<key>PciIo</key>
+			<false/>
 			<key>UnicodeCollation</key>
 			<false/>
 		</dict>
@@ -831,6 +848,10 @@
 			<false/>
 			<key>RequestBootVarRouting</key>
 			<true/>
+			<key>ResizeUsePciRbIo</key>
+			<false/>
+			<key>ShimRetainProtocol</key>
+			<false/>
 			<key>ResizeGpuBars</key>
 			<integer>-1</integer>
 			<key>TscSyncTimeout</key>
