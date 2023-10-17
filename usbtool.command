@@ -184,8 +184,8 @@ let kInfoPlistSourceDictionary: [String: Any] = {
 		guard let result = plist as? [String: Any] else {
 			throw USBTool.RuntimeError("failed to cast serialized property list to dictionary")
 		}
-	
-		return result 
+		
+		return result
 	}
 	
 	catch {
@@ -193,7 +193,7 @@ let kInfoPlistSourceDictionary: [String: Any] = {
 	}
 }()
 
-let kModelIdentifier: String = {	
+let kModelIdentifier: String = {
 	var identifier: String?
 	let entry = IORegistryEntryFromPath(kIOMainPortDefault, "IOService:/")
 	
@@ -339,7 +339,7 @@ public extension USBKextBundle {
 	var exists: Bool {
 		kFileManager.itemExists(atPath: bundleURL.path)
 	}
-
+	
 	func remove() throws {
 		try kFileManager.removeItem(atPath: bundleURL.path)
 	}
@@ -350,7 +350,7 @@ public extension USBKextBundle {
 				if NSAlert("\(bundleURL.path) exists", buttonTitles: "Overwrite", "Cancel").runModal() != .alertFirstButtonReturn {
 					throw USBTool.RuntimeError("cancelled by user")
 				}
-
+				
 				try remove()
 			}
 		}
@@ -418,7 +418,7 @@ internal final class InfoPlist: USBInfoPlist {
 			ports[port.name] = [
 				Self.portAddressKey: port.address.data,
 				Self.portConnectorKey: port.connector.rawValue
-			]
+			] as [String: Any]
 		}
 		
 		let driverPersonality: [String: Any] = [
@@ -430,7 +430,7 @@ internal final class InfoPlist: USBInfoPlist {
 			Self.providerMergePropertiesKey: [
 				Self.portCountKey: portCount.data,
 				Self.portsKey: ports
-			]
+			] as [String: Any]
 		]
 		
 		dictionary[Self.bundleNameKey] = kBundleName
@@ -438,7 +438,7 @@ internal final class InfoPlist: USBInfoPlist {
 		dictionary[Self.personalitiesKey] = [
 			kDriverPersonalityKey: driverPersonality
 		]
-
+		
 		data = try PropertyListSerialization.xmlData(from: dictionary)
 	}
 }
@@ -581,17 +581,17 @@ internal struct USBTool {
 	struct RuntimeError: LocalizedError {
 		let description: String
 		let location: String
-	
+		
 		init(_ description: String, location: String = #function) {
 			self.description = description
 			self.location = location
 		}
-	
+		
 		var errorDescription: String? {
 			return "The operation couldn't be completed: \(String(describing: self))"
 		}
 	}
-		
+	
 	static let mainMenu: NSMenu = {
 		let processName = ProcessInfo.processInfo.processName
 		let appMenu = NSMenuItem(title: processName)
@@ -610,7 +610,7 @@ internal struct USBTool {
 				   keyEquivalent: "c")
 		])
 		return NSMenu(title: "Main Menu", items: [appMenu, editMenu])
-	}()	
+	}()
 	
 	static let mainWindow: NSWindow = {
 		let window = NSWindow()
