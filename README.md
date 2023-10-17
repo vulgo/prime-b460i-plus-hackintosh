@@ -1,13 +1,14 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS 13 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 13 working well on compatible hardware.
+OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 14 working well on compatible hardware.
 
 <details><summary><strong>Notes</strong></summary><br>
 
 - For features listed as `in-scope` that are not working as expected, it may be beneficial for all to open an issue here
 - Where something is listed as `out-of-scope` more explicit information will surely be found in various places across the internet, or in the OpenCore documentation
 - [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
-- WiFi and Bluetooth work natively in macOS 13 with m.2 Broadcom BCM94360NG
+- WiFi and Bluetooth work natively in macOS 14 with m.2 Broadcom BCM94360NG
+- VirtualSMC plug-ins for this board have been moved into the `PlugIns` directory of `VirtualSMC.kext` and `config.plist` reflects that choice
 - Using more than one display with Intel HD 630 has issues
 
 </details>
