@@ -2,6 +2,7 @@
 
 OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 14 working well on compatible hardware.
 
+
 <details><summary><strong>Notes</strong></summary><br>
 
 - For features listed as `in-scope` that are not working as expected, it may be beneficial for all to open an issue here
@@ -25,6 +26,7 @@ OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherb
 - System wake, sleep, and shutdown
 - macOS installation and updates
 - System stability
+- OC\_ATTR\_USE\_VOLUME\_ICON|OC\_ATTR\_USE\_DISK\_LABEL\_FILE|OC\_ATTR\_USE\_POINTER\_CONTROL|OC\_ATTR\_USE\_FLAVOUR\_ICON
 
 </details>
     
