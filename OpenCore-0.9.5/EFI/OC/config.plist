@@ -496,11 +496,11 @@
 		<array>
 			<dict>
 				<key>Arguments</key>
-				<string>-nomap -noversion "mode.nsh" set StartupDelay 0</string>
+				<string>-nomap -noversion "setmode.nsh"</string>
 				<key>Auxiliary</key>
 				<true/>
 				<key>Comment</key>
-				<string>Not signed for security reasons</string>
+				<string></string>
 				<key>Enabled</key>
 				<true/>
 				<key>Flavour</key>
