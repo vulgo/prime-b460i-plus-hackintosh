@@ -1,6 +1,6 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 14 working well on compatible hardware.
+OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 14 working well on compatible hardware
 
 
 <details><summary><strong>Notes</strong></summary><br>
@@ -25,8 +25,8 @@ OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherb
 - PCIe active-state power management
 - System wake, sleep, and shutdown
 - macOS installation and updates
+- OC\_ATTR\_USE\_VOLUME\_ICON | OC\_ATTR\_USE\_DISK\_LABEL\_FILE | OC\_ATTR\_USE\_POINTER\_CONTROL | OC\_ATTR\_USE\_FLAVOUR\_ICON
 - System stability
-- OC\_ATTR\_USE\_VOLUME\_ICON|OC\_ATTR\_USE\_DISK\_LABEL\_FILE|OC\_ATTR\_USE\_POINTER\_CONTROL|OC\_ATTR\_USE\_FLAVOUR\_ICON
 
 </details>
     
@@ -91,11 +91,11 @@ Source: [dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#
 
 ## Intel Graphics
 
-Edit the ```DeviceProperties``` section of your config.plist according to your configuration.
+Edit the ```DeviceProperties``` section of your config.plist according to your configuration
 
 <details><summary><strong>Connectorless (using PCIe AMD GPU)</strong></summary><br>
-    
-The default `config.plist` in this repo is configured in this way.
+
+The default `config.plist` in this repo is configured in this way
 
 ```xml
 ...
@@ -119,7 +119,7 @@ The default `config.plist` in this repo is configured in this way.
 
 <details><summary><strong>Attached Display</strong></summary><br>
 
-Intel graphics should work well with a single display. Prefer DisplayPort instead of HDMI where possible.
+Intel graphics should work well with a single display. Prefer DisplayPort instead of HDMI where possible
 
 ```xml
 ...
@@ -157,11 +157,11 @@ Refer to [README-Intel-Graphics.md](/README/README-Intel-Graphics.md)
 
 <details><summary><strong>What's this?</strong></summary>
 
-OpenCore will generate a complete [SMBIOS](https://en.wikipedia.org/wiki/System_Management_BIOS) for your system according to information provided in the `PlatformInfo` section of `config.plist` and a dataset derived from Apple firmwares. `GenSMBIOS` is a python script that uses acidanthera's `macserial` to generate required serials and unique identifiers.
+OpenCore will generate a complete [SMBIOS](https://en.wikipedia.org/wiki/System_Management_BIOS) for your system according to information provided in the `PlatformInfo` section of `config.plist` and a dataset derived from Apple firmwares. `GenSMBIOS` is a python script that uses acidanthera's `macserial` to generate required serials and unique identifiers
 
 </details>
 
-Edit the `PlatformInfo` section of your config.plist so that the `MLB`, `ROM`, `SystemSerialNumber` and `SystemUUID` values are unique to your machine.
+Edit the `PlatformInfo` section of your config.plist so that the `MLB`, `ROM`, `SystemSerialNumber` and `SystemUUID` values are unique to your machine
 
 ```xml
 ...
@@ -200,21 +200,25 @@ GenSMBIOS: [github.com/corpnewt/GenSMBIOS](https://github.com/corpnewt/GenSMBIOS
 
 ## Reset NVRAM
 
-At the picker, **press space**, choose `Reset NVRAM`.
+At the picker, **press space**, choose `Reset NVRAM`
 
-Reset NVRAM at first boot and **whenever the bootloader files have changed**.
+Reset NVRAM at first boot and **whenever the bootloader files have changed**
 
 # Post-Install
 
+### System Integrity Protection
+
+The `csrutil` EFI command from `AcidAnthera/OpenCorePkg` is available from the EFI shell. System Integrity Protection can be enabled/disabled with `csrutil toggle` 
+
 ### USB
 
-Generate a valid `USBPorts.kext`.
+Generate a valid `USBPorts.kext`
 
 Refer to [README-usbtool.command.md](/README/README-usbtool.command.md)
 
 ### NVMe
 
-> NVMeFix is a set of patches for the Apple NVMe storage driver, IONVMeFamily. Its goal is to improve compatibility with non-Apple SSDs.
+> NVMeFix is a set of patches for the Apple NVMe storage driver, IONVMeFamily. Its goal is to improve compatibility with non-Apple SSDs
 
 Refer to [github.com/acidanthera/NVMeFix](https://github.com/acidanthera/NVMeFix)
 
