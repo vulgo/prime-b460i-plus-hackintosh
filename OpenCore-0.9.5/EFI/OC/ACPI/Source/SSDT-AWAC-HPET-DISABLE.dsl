@@ -10,10 +10,13 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "AwacHpet", 1)
     
     If (_OSI ("Darwin"))
     {
-        Method (_SB._INI, 0, NotSerialized)
+        If (!CondRefOf (_SB.IN))
         {
-            STAS = One
-            HPTE = Zero
+            Method (_SB._INI, 0, NotSerialized)
+            {
+                STAS = One
+                HPTE = Zero
+            }
         }
     }
 }
