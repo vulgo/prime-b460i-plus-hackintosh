@@ -9,7 +9,7 @@ DefinitionBlock ("", "SSDT", 1, "vulgo", "AwacSsdt", 1)
     
     If (_OSI ("Darwin"))
     {
-        If (!CondRefOf (_SB.IN))
+        If (!CondRefOf (_SB.INI))
         {
             Method (_SB._INI, 0, NotSerialized)
             {
