@@ -1,5 +1,73 @@
 OpenCore Changelog
 ==================
+#### v1.0.1
+- Updated code and added progress bar to macrecovery, thx @soyeonswife63
+- Bundled fat binary i386/x64 10.6+ compatible `nvramdump` with LogoutHook release
+- Added support for manual build of i386/x64 10.6+ versions of userspace tools via `FATBIN32=1 make`
+- Disabled `XcpmExtraMsrs MSR_MISC_PWR_MGMT` patch on macOS 12+ due to non-existence
+- Fixed `ThirdPartyDrives` quirk on macOS 14.4 and above
+- Resolved issue booting recovery for OS X 10.8 and earlier since 0.9.7
+- Migrated to edk2-stable202405 
+
+#### v1.0.0
+- Updated builtin firmware versions for SMBIOS and the rest
+- Switched to Apple silicon GitHub runner for CI, thx @Goooler
+- Added Apple Silicon support in all provided utilities
+- Utilities now require macOS 10.9+ (OpenCore itself still supports macOS 10.4+)
+- Added `AllowRelocationBlock` support for 32-bit version
+- Enabled additional serial logging in non-RELEASE builds of OpenDuet
+- Added missing DxeCore ImageContext HOB in OpenDuet
+- Fixed assert caused by dependency ordering in OpenDuet
+- Prevented assert in normal situation when freeing memory above 4GB in OpenDuet
+- Prevented debug assert reporting that optional Hii protocols are not present in OpenDuet
+- Fixed problem loading non-firmware runtime drivers (e.g. OpenRuntime.efi) in OpenDuet
+- Resolved issue using NOOPT debugging in OpenDuet
+- Fixed alphabetical ordering in Configuration.pdf, thx @leon9078
+
+#### v0.9.9
+- Fixed incorrect warning in ocvalidate
+- Modified `Launchd.command` to recreate its log file if deleted
+- Updated `Launchd.command` to work with macOS Sonoma (re-run `./Launchd.command install` after upgrading to Sonoma)
+- Fixed an incorrectly labelled MacBookPro11,3 model code in `macserial`, thx @Macschrauber
+- Improved macrecovery download logic for slow connections to get chunklist first, thx @scriptod911
+
+#### v0.9.8
+- Updated OpenDuet to allow loading unsigned, unaligned legacy Apple images such as HfsPlusLegacy.efi
+- Fixed CPU frequency calculation on AMD 10h family
+- Swapped the position of Shutdown and Restart buttons to better match recent macOS
+- Added `OC_ATTR_USE_REVERSED_UI` to allow access to previous default Shutdown and Restart button arrangement
+- Fixed intro animation getting stuck in OpenCanopy if an entry which returns to menu is selected before animation ends
+- Modified OpenCanopy to require presence of label images only when used due to `OC_ATTR_USE_GENERIC_LABEL_IMAGE`
+- Provided `OC_ATTR_REDUCE_MOTION` to optionally disable non-required OpenCanopy menu animations
+- Modified NVRAM logout hook to handle XML entities in string vars
+- Fixed CPU frequency calculation on AMD 0Fh family
+- Added kext blocker `Exclude` strategy for mkext
+- Re-enabled AudioDxe failover to protocol GET mode for systems such as Acer E5 where it works when DisconnectHda doesn't
+- Added `FirmwareSettingsEntry.efi` driver which adds menu entry to reboot into UEFI firmware settings
+- Enabled use of picker shortcut keys which are read out in OpenCanopy when using `PickerAudioAssist`
+- Modified builtin picker so as not to respond to keys queued while audio assist menu is being read out
+- Fixed Linux EFI stub loading error when using OpenDuet since 0.8.8
+- Fixed APFS JumpStart with OpenDuet and `SecureBootModel` `Disabled`
+- Added TSC frequency calculation for xen hypervisor, thx @netanelc305
+- Supported additional early Nvidia UEFI VBIOS in `EnableGop` `vBiosInsert.sh`
+
+#### v0.9.7
+- Updated recovery_urls.txt
+- Changed OpenDuet to enforce `W^X` settings rather than fixing them in loaded images
+- Updated `FixupAppleEfiImages` quirk to fix `W^X` errors in all non-Secure Boot Apple signed binaries
+- Updated builtin firmware versions for SMBIOS and the rest
+- Updated `AppleEfiSignTool` to work with new PE COFF loader
+- Fixed recovery failing to boot on some systems
+- Updated `ProvideCurrentCpuInfo` quirk to support CPUID leaf 0x2 cache size reporting on Mac OS X 10.5 and 10.6
+- Updated `efidebug.tool` to support new standard image format
+
+#### v0.9.6
+- Updated builtin firmware versions for SMBIOS and the rest
+- Fixed hang while generating boot entries on some systems
+- Added `efidebug.tool` support for 32-bit on 32-bit using GDB or LLDB
+- Fixed potential incorrect values in kernel image capabilities calculation
+- Added `FixupAppleEfiImages` quirk to allow booting Mac OS X 10.4 and 10.5 boot.efi images on modern secure image loaders
+
 #### v0.9.5
 - Fixed GUID formatting for legacy NVRAM saving
 - Fixed inability to open files in root directory on an NTFS filesystem
