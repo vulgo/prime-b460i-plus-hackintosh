@@ -1,6 +1,6 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 15 working well on compatible hardware
+OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 14 working well on compatible hardware
 
 
 <details><summary><strong>Notes</strong></summary><br>
@@ -8,8 +8,8 @@ OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherb
 - For features listed as `in-scope` that are not working as expected, it may be beneficial for all to open an issue here
 - Where something is listed as `out-of-scope` more explicit information will surely be found in various places across the internet, or in the OpenCore documentation
 - [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
-- WiFi and Bluetooth work natively in macOS 14 with m.2 Broadcom BCM94360NG
-- VirtualSMC plug-ins for this board have been moved into the `PlugIns` directory of `VirtualSMC.kext` and `config.plist` reflects that choice
+- WiFi and Bluetooth work natively in macOS 15 with m.2 Broadcom BCM94360NG
+- The repo contains files that are invisible in Finder according to a hidden file visibility toggle (Command + Shift + .)
 - Using more than one display with Intel HD 630 has issues
 
 </details>
@@ -25,13 +25,15 @@ OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherb
 - PCIe active-state power management
 - System wake, sleep, and shutdown
 - macOS installation and updates
-- OC\_ATTR\_USE\_VOLUME\_ICON | OC\_ATTR\_USE\_DISK\_LABEL\_FILE | OC\_ATTR\_USE\_POINTER\_CONTROL | OC\_ATTR\_USE\_FLAVOUR\_ICON
 - System stability
+- OpenCore picker attributes for reading icons from volumes, themed icons and mouse control
+- EFI shell usability, avoiding the BuiltinGraphics text rendering driver at this time
 
 </details>
     
 <details><summary><strong><code>out-of-scope</code></strong></summary><br>
 
+- Loading out-of-scope modified configurations or almost any ACPI table not originating from this repo
 - [Apple ID problems](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)
 - UEFI Secure Boot
 - [OpenCore Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html)
@@ -107,7 +109,7 @@ The default `config.plist` in this repo is configured in this way
         <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
         <dict>
             <key>AAPL,ig-platform-id</key>
-            <data>AwCYPg==</data>
+            <data>AwDImw==</data>
         </dict>
         ...
     </dict>
