@@ -1,6 +1,6 @@
 # Prime B460i-PLUS hackintosh
 
-OpenCore configuration for running macOS 14 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 14 working well on compatible hardware
+OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 15 working well on compatible hardware
 
 
 <details><summary><strong>Notes</strong></summary><br>
@@ -109,7 +109,7 @@ The default `config.plist` in this repo is configured in this way
         <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
         <dict>
             <key>AAPL,ig-platform-id</key>
-            <data>AwDImw==</data>
+            <data>AwCYPg==</data>
         </dict>
         ...
     </dict>
