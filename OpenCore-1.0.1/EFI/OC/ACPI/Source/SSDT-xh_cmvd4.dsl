@@ -2,10 +2,6 @@
 #define NOT_CONNECTABLE		Zero
 #define NO_CONNECTOR_TYPE	0xFF
 #define RESERVED		Zero
-#define REV			0x01
-#define NOT_CONNECTABLE		Zero
-#define NO_CONNECTOR_TYPE	0xFF
-#define RESERVED		Zero
 #define HS01_CONNECTABLE	One
 #define HS01_CONNECTOR_TYPE	0x03
 #define HS01_USER_VISIBLE	0x01
