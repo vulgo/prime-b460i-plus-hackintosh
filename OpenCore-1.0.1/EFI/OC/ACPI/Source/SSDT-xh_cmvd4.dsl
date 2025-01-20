@@ -1,419 +1,479 @@
-#define CREATE_FIELD_REV CreateField (DerefOf (Local0 [Zero]), Zero, 0x07, REV)
-#define CREATE_FIELD_VISI CreateField (DerefOf (Local0 [Zero]), 0x40, One, VISI)
-#define CREATE_FIELD_GPOS CreateField (DerefOf (Local0 [Zero]), 0x57, 0x08, GPOS)
+#define REV			0x01
+#define NOT_CONNECTABLE		Zero
+#define NO_CONNECTOR_TYPE	0xFF
+#define RESERVED		Zero
+#define REV			0x01
+#define NOT_CONNECTABLE		Zero
+#define NO_CONNECTOR_TYPE	0xFF
+#define RESERVED		Zero
+#define HS01_CONNECTABLE	One
+#define HS01_CONNECTOR_TYPE	0x03
+#define HS01_USER_VISIBLE	0x01
+#define HS01_GROUP_POSITION	0x01
+#define HS02_CONNECTABLE	One
+#define HS02_CONNECTOR_TYPE	0x03
+#define HS02_USER_VISIBLE	0x01
+#define HS02_GROUP_POSITION	0x02
+#define HS03_CONNECTABLE	One
+#define HS03_CONNECTOR_TYPE	0x03
+#define HS03_USER_VISIBLE	0x01
+#define HS03_GROUP_POSITION	0x03
+#define HS04_CONNECTABLE	One
+#define HS04_CONNECTOR_TYPE	0x03
+#define HS04_USER_VISIBLE	0x01
+#define HS04_GROUP_POSITION	0x04
+#define HS05_CONNECTABLE	One
+#define HS05_CONNECTOR_TYPE	0x03
+#define HS05_USER_VISIBLE	0x01
+#define HS05_GROUP_POSITION	0x05
+#define HS06_CONNECTABLE	One
+#define HS06_CONNECTOR_TYPE	0x03
+#define HS06_USER_VISIBLE	0x01
+#define HS06_GROUP_POSITION	0x06
+#define HS07_CONNECTABLE	One
+#define HS07_CONNECTOR_TYPE	Zero
+#define HS07_USER_VISIBLE	0x01
+#define HS07_GROUP_POSITION	0x07
+#define HS08_CONNECTABLE	One
+#define HS08_CONNECTOR_TYPE	Zero
+#define HS08_USER_VISIBLE	0x01
+#define HS08_GROUP_POSITION	0x08
+#define HS09_CONNECTABLE	One
+#define HS09_CONNECTOR_TYPE	Zero
+#define HS09_USER_VISIBLE	0x01
+#define HS09_GROUP_POSITION	0x09
+#define HS10_CONNECTABLE	One
+#define HS10_CONNECTOR_TYPE	Zero
+#define HS10_USER_VISIBLE	0x01
+#define HS10_GROUP_POSITION	0x0a
+#define HS12_CONNECTABLE	One
+#define HS12_CONNECTOR_TYPE	0xff
+#define HS12_USER_VISIBLE	0x00
+#define HS12_GROUP_POSITION	0x0b
+#define SS01_CONNECTABLE	One
+#define SS01_CONNECTOR_TYPE	0x03
+#define SS01_USER_VISIBLE	0x01
+#define SS01_GROUP_POSITION	0x01
+#define SS02_CONNECTABLE	One
+#define SS02_CONNECTOR_TYPE	0x03
+#define SS02_USER_VISIBLE	0x01
+#define SS02_GROUP_POSITION	0x02
+#define SS03_CONNECTABLE	One
+#define SS03_CONNECTOR_TYPE	0x03
+#define SS03_USER_VISIBLE	0x01
+#define SS03_GROUP_POSITION	0x03
+#define SS04_CONNECTABLE	One
+#define SS04_CONNECTOR_TYPE	0x03
+#define SS04_USER_VISIBLE	0x01
+#define SS04_GROUP_POSITION	0x04
+#define SS05_CONNECTABLE	One
+#define SS05_CONNECTOR_TYPE	0x03
+#define SS05_USER_VISIBLE	0x01
+#define SS05_GROUP_POSITION	0x05
+#define SS06_CONNECTABLE	One
+#define SS06_CONNECTOR_TYPE	0x03
+#define SS06_USER_VISIBLE	0x01
+#define SS06_GROUP_POSITION	0x06
 
 DefinitionBlock ("", "SSDT", 1, "vulgo", "xh_cmvd4", 1)
 {
-    External (_SB_.PCI0.XHC_.RHUB, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS01, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS02, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS03, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS04, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS05, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS06, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS07, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS08, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS09, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS10, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS11, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS12, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS13, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.HS14, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS01, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS02, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS03, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS04, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS05, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS06, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS07, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS08, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS09, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.SS10, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.USR1, DeviceObj)
-    External (_SB_.PCI0.XHC_.RHUB.USR2, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS01, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS02, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS03, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS04, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS05, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS06, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS07, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS08, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS09, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS10, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS11, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS12, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS13, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.HS14, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS01, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS02, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS03, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS04, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS05, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS06, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS07, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS08, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS09, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.SS10, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.USR1, DeviceObj)
+	External (_SB_.PCI0.XHC_.RHUB.USR2, DeviceObj)
 
-    Scope (\_SB.PCI0.XHC.RHUB)
-    {
-        Name (H1CN, One)
-        Name (H1CT, 0x03)
-        Name (H1VS, One)
-        Name (H1GP, One)
-        Name (H2CN, One)
-        Name (H2CT, 0x03)
-        Name (H2VS, One)
-        Name (H2GP, 0x02)
-        Name (H3CN, One)
-        Name (H3CT, 0x03)
-        Name (H3VS, One)
-        Name (H3GP, 0x03)
-        Name (H4CN, One)
-        Name (H4CT, 0x03)
-        Name (H4VS, One)
-        Name (H4GP, 0x04)
-        Name (H5CN, One)
-        Name (H5CT, 0x03)
-        Name (H5VS, One)
-        Name (H5GP, 0x05)
-        Name (H6CN, One)
-        Name (H6CT, 0x03)
-        Name (H6VS, One)
-        Name (H6GP, 0x06)
-        Name (H7CN, One)
-        Name (H7CT, Zero)
-        Name (H7VS, One)
-        Name (H7GP, 0x07)
-        Name (H8CN, One)
-        Name (H8CT, Zero)
-        Name (H8VS, One)
-        Name (H8GP, 0x08)
-        Name (H9CN, One)
-        Name (H9CT, Zero)
-        Name (H9VS, One)
-        Name (H9GP, 0x09)
-        Name (HACN, One)
-        Name (HACT, Zero)
-        Name (HAVS, One)
-        Name (HAGP, 0x0A)
-        Name (HCCN, One)
-        Name (HCCT, 0xFF)
-        Name (HCVS, Zero)
-        Name (HCGP, 0x0B)
-        Name (S1CN, One)
-        Name (S1CT, 0x03)
-        Name (S1VS, One)
-        Name (S1GP, One)
-        Name (S2CN, One)
-        Name (S2CT, 0x03)
-        Name (S2VS, One)
-        Name (S2GP, 0x02)
-        Name (S3CN, One)
-        Name (S3CT, 0x03)
-        Name (S3VS, One)
-        Name (S3GP, 0x03)
-        Name (S4CN, One)
-        Name (S4CT, 0x03)
-        Name (S4VS, One)
-        Name (S4GP, 0x04)
-        Name (S5CN, One)
-        Name (S5CT, 0x03)
-        Name (S5VS, One)
-        Name (S5GP, 0x05)
-        Name (S6CN, One)
-        Name (S6CT, 0x03)
-        Name (S6VS, One)
-        Name (S6GP, 0x06)
-        
-        Method (GPLD, 2, NotSerialized)
-        {
-            Local0 = Package ()
-            {
-                Buffer (0x10){}
-            }
-            
-            CREATE_FIELD_REV     // _PLD: Revision
-            CREATE_FIELD_VISI    // _PLD: Visibility
-            CREATE_FIELD_GPOS    // _PLD: Group Position
-            
-            REV = One      // _PLD: Revision = 1           
-            VISI = Arg0    // _PLD: Visibility = Arg0          
-            GPOS = Arg1    // _PLD: Group Position = Arg1
-            
-            Return (Local0)
-        }
+	Scope (\_SB.PCI0.XHC.RHUB)
+	{
+		Name (HS01._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS01_CONNECTABLE,
+			HS01_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (GUPC, 2, NotSerialized)
-        {
-            Local0 = Package (0x4) {}
-            
-            Local0 [Zero] = Arg0    // _UPC: User Connectable = Arg0
-            Local0 [One] = Arg1     // _UPC: Connector Type = Arg1
-            
-            Return (Local0)
-        }
+		Name (HS01._PLD, Package()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS01_USER_VISIBLE,
+				PLD_GroupPosition = HS01_GROUP_POSITION)
+		})
 
-        Method (HS01._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H1CN, H1CT))
-        }
+		Name (HS02._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS02_CONNECTABLE,
+			HS02_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS01._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H1VS, H1GP))
-        }
+		Name (HS02._PLD, Package()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS02_USER_VISIBLE,
+				PLD_GroupPosition = HS02_GROUP_POSITION)
+		})
 
-        Method (HS02._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H2CN, H2CT))
-        }
+		Name (HS03._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS03_CONNECTABLE,
+			HS03_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS02._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H2VS, H2GP))
-        }
+		Name (HS03._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS03_USER_VISIBLE,
+				PLD_GroupPosition = HS03_GROUP_POSITION)
+		})
 
-        Method (HS03._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H3CN, H3CT))
-        }
+		Name (HS04._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS04_CONNECTABLE,
+			HS04_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS03._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H3VS, H3GP))
-        }
+		Name (HS04._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS04_USER_VISIBLE,
+				PLD_GroupPosition = HS04_GROUP_POSITION)
+		})
 
-        Method (HS04._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H4CN, H4CT))
-        }
+		Name (HS05._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS05_CONNECTABLE,
+			HS05_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS04._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H4VS, H4GP))
-        }
+		Name (HS05._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS05_USER_VISIBLE,
+				PLD_GroupPosition = HS05_GROUP_POSITION)
+		})
 
-        Method (HS05._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H5CN, H5CT))
-        }
+		Name (HS06._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS06_CONNECTABLE,
+			HS06_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS05._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H5VS, H5GP))
-        }
+		Name (HS06._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS06_USER_VISIBLE,
+				PLD_GroupPosition = HS06_GROUP_POSITION)
+		})
 
-        Method (HS06._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H6CN, H6CT))
-        }
+		Name (HS07._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS07_CONNECTABLE,
+			HS07_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS06._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H6VS, H6GP))
-        }
+		Name (HS07._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS07_USER_VISIBLE,
+				PLD_GroupPosition = HS07_GROUP_POSITION) 
+		})
 
-        Method (HS07._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H7CN, H7CT))
-        }
+		Name (HS08._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS08_CONNECTABLE,
+			HS08_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS07._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H7VS, H7GP))
-        }
+		Name (HS08._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS08_USER_VISIBLE,
+				PLD_GroupPosition = HS08_GROUP_POSITION)
+		})
 
-        Method (HS08._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H8CN, H8CT))
-        }
+		Name (HS09._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS09_CONNECTABLE,
+			HS09_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS08._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H8VS, H8GP))
-        }
+		Name (HS09._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS09_USER_VISIBLE,
+				PLD_GroupPosition = HS09_GROUP_POSITION)
+		})
 
-        Method (HS09._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (H9CN, H9CT))
-        }
+		Name (HS10._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			HS10_CONNECTABLE,
+			HS10_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS09._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (H9VS, H9GP))
-        }
+		Name (HS10._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = HS10_USER_VISIBLE,
+				PLD_GroupPosition = HS10_GROUP_POSITION)
+		})
 
-        Method (HS10._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (HACN, HACT))
-        }
+		Name (USR1._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			NOT_CONNECTABLE,
+			NO_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (HS10._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (HAVS, HAGP))
-        }
+		Name (USR2._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			NOT_CONNECTABLE,
+			NO_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (USR1._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (Zero, 0xFF))
-        }
+		Name (SS01._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			SS01_CONNECTABLE,
+			SS01_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (USR1._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (Zero, Zero))
-        }
+		Name (SS01._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = SS01_USER_VISIBLE,
+				PLD_GroupPosition = SS01_GROUP_POSITION)
+		})
 
-        Method (USR2._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (Zero, 0xFF))
-        }
+		Name (SS02._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			SS02_CONNECTABLE,
+			SS02_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (USR2._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (Zero, Zero))
-        }
+		Name (SS02._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = SS02_USER_VISIBLE,
+				PLD_GroupPosition = SS02_GROUP_POSITION)
+		})
 
-        Method (SS01._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (S1CN, S1CT))
-        }
+		Name (SS03._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			SS03_CONNECTABLE,
+			SS03_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (SS01._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (S1VS, S1GP))
-        }
+		Name (SS03._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = SS03_USER_VISIBLE,
+				PLD_GroupPosition = SS03_GROUP_POSITION)
+		})
 
-        Method (SS02._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (S2CN, S2CT))
-        }
+		Name (SS04._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			SS04_CONNECTABLE,
+			SS04_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (SS02._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (S2VS, S2GP))
-        }
+		Name (SS04._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = SS04_USER_VISIBLE,
+				PLD_GroupPosition = SS04_GROUP_POSITION)
+		})
 
-        Method (SS03._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (S3CN, S3CT))
-        }
+		Name (SS05._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			SS05_CONNECTABLE,
+			SS05_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (SS03._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (S3VS, S3GP))
-        }
+		Name (SS05._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = SS05_USER_VISIBLE,
+				PLD_GroupPosition = SS06_GROUP_POSITION)
+		})
 
-        Method (SS04._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (S4CN, S4CT))
-        }
+		Name (SS06._UPC, Package()	// _UPC: USB Port Capabilities
+		{
+			SS06_CONNECTABLE,
+			SS06_CONNECTOR_TYPE,
+			RESERVED,
+			RESERVED
+		})
 
-        Method (SS04._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (S4VS, S4GP))
-        }
+		Name (SS06._PLD, Package ()	// _PLD: Physical Location of Device
+		{
+			ToPLD (
+				PLD_Revision = REV,
+				PLD_UserVisible = SS06_USER_VISIBLE,
+				PLD_GroupPosition = SS06_GROUP_POSITION)
+		})
 
-        Method (SS05._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (S5CN, S5CT))
-        }
+		If (CondRefOf (HS11))
+		{
+			Name (HS11._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
 
-        Method (SS05._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (S5VS, S5GP))
-        }
+		If (CondRefOf (HS12))
+		{
+			Name (HS12._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				HS12_CONNECTABLE,
+				HS12_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
 
-        Method (SS06._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-        {
-            Return (GUPC (S6CN, S6CT))
-        }
+			Name (HS12._PLD, Package ()	// _PLD: Physical Location of Device
+			{
+				ToPLD (
+					PLD_Revision = REV,
+					PLD_UserVisible = HS12_USER_VISIBLE,
+					PLD_GroupPosition = HS12_GROUP_POSITION)
+			})
+		}
 
-        Method (SS06._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-        {
-            Return (GPLD (S6VS, S6GP))
-        }
+		If (CondRefOf (HS13))
+		{
+			Name (HS13._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
 
-        If (CondRefOf (HS11))
-        {
-            Method (HS11._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
+		If (CondRefOf (HS14))
+		{
+			Name (HS14._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
 
-            Method (HS11._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
+		If (CondRefOf (SS07))
+		{
+			Name (SS07._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
 
-        If (CondRefOf (HS12))
-        {
-            Method (HS12._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (HCCN, HCCT))
-            }
+		If (CondRefOf (SS08))
+		{
+			Name (SS08._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
 
-            Method (HS12._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (HCVS, HCGP))
-            }
-        }
-
-        If (CondRefOf (HS13))
-        {
-            Method (HS13._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (HS13._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
-
-        If (CondRefOf (HS14))
-        {
-            Method (HS14._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (HS14._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
-
-        If (CondRefOf (SS07))
-        {
-            Method (SS07._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (SS07._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
-
-        If (CondRefOf (SS08))
-        {
-            Method (SS08._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (SS08._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
-
-        If (CondRefOf (SS09))
-        {
-            Method (SS09._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (SS09._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
-
-        If (CondRefOf (SS10))
-        {
-            Method (SS10._UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-            {
-                Return (GUPC (Zero, 0xFF))
-            }
-
-            Method (SS10._PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-            {
-                Return (GPLD (Zero, Zero))
-            }
-        }
-    }
+		If (CondRefOf (SS09))
+		{
+			Name (SS09._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
+	
+		If (CondRefOf (SS10))
+		{
+			Name (SS10._UPC, Package()	// _UPC: USB Port Capabilities
+			{
+				NOT_CONNECTABLE,
+				NO_CONNECTOR_TYPE,
+				RESERVED,
+				RESERVED
+			})
+		}
+	}
 }
 
