@@ -8,7 +8,7 @@ OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherb
 - For features listed as `in-scope` that are not working as expected, it may be beneficial for all to open an issue here
 - Where something is listed as `out-of-scope` more explicit information will surely be found in various places across the internet, or in the OpenCore documentation
 - [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
-- WiFi and Bluetooth work natively in macOS 15 with m.2 Broadcom BCM94360NG
+- WiFi and Bluetooth with m.2 Broadcom BCM94360NG will work in macOS 15 with patched `IOSkywalkFamily.kext` from OpenCore Legacy Project (enable three `Add`s and one `Block` in `config.plist`)
 - The repo contains files that are invisible in Finder according to a hidden file visibility toggle (Command + Shift + .)
 - Using more than one display with Intel HD 630 has issues
 
@@ -19,7 +19,7 @@ OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherb
 - Accelerated graphics on supported Intel and AMD GPUs
 - Built-in audio
 - Built-in ethernet
-- Airport and Bluetooth using a natively supported device
+- Airport and Bluetooth using a natively supported device or BCM94360
 - USB
 - CPU power management
 - PCIe active-state power management
