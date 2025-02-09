@@ -529,7 +529,7 @@
 		<array>
 			<dict>
 				<key>Arguments</key>
-				<string>-nomap -noversion "setmode.nsh"</string>
+				<string>-nomap -noversion setmode</string>
 				<key>Auxiliary</key>
 				<true/>
 				<key>Comment</key>
