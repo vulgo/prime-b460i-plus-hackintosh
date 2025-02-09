@@ -9,8 +9,10 @@ OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherb
 - Where something is listed as `out-of-scope` more explicit information will surely be found in various places across the internet, or in the OpenCore documentation
 - [TextMate](https://macromates.com/) ([github.com/textmate/textmate](https://github.com/textmate/textmate)) is free software useful for editing `config.plist`
 - WiFi with m.2 Broadcom BCM94360NG works in macOS 15 with downgraded/patched/blocked kernel extensions and OCLP root patching for modern WiFi
-- Bluetooth with m.2 Broadcom BCM94360NG works natively
+- The Bluetooth of m.2 Broadcom BCM94360NG works natively
 - The repo contains files that are invisible in Finder according to a hidden file visibility toggle (Command + Shift + .)
+- The EFI shell has the `csrutil` command e.g. `csrutil status`, `csrutil enable`, `csrutil disable 0x803` for controlling the value of the `csr-active-config` NVRAM variable
+- Use `resetsystem` (or `reboot`) to apply changes to `csr-active-config`
 - Using more than one display with Intel HD 630 has issues
 
 </details>
