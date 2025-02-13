@@ -2,6 +2,11 @@
 
 OpenCore configuration for running macOS 15 on the ASUS Prime B460i-PLUS motherboard. Without obsolete or cosmetic patches, the goal is simply macOS 15 working well on (mostly if you want WiFi) compatible hardware
 
+<details><summary><strong>Screenshot</strong></summary><br>
+
+![OpenCanopy Screenshot](/Screenshots/OpenCanopy.png?raw=true)
+
+</details>
 
 <details><summary><strong>Notes</strong></summary><br>
 
@@ -213,7 +218,9 @@ Reset NVRAM at first boot and **whenever the bootloader files have changed**
 
 ### System Integrity Protection
 
-The `csrutil` EFI command from `AcidAnthera/OpenCorePkg` is available from the EFI shell. System Integrity Protection can be enabled/disabled with `csrutil toggle` 
+The `csrutil` command from `AcidAnthera/OpenCorePkg` is available from the EFI shell. System Integrity Protection can be enabled/disabled in NVRAM with, for example, `csrutil enable` and `csrutil disable 0x803`
+
+The default in `config.plist` is `enabled`, resetting NVRAM will re-enable System Integrity Protection. Use `csrutil` in EFI shell to disable it, for example, while adding a `.VolumeIcon` to the `/System/Volumes/Preboot/UUID` directory, or at the root of the `Preboot` volume, or for root patching with OpenCore Legacy Patcher
 
 ### USB
 
